@@ -305,10 +305,12 @@ h3,.h3{font-size:clamp(20px,1.8vw,28px);font-weight:700;line-height:1.3;letter-s
       position:relative;overflow:hidden}
 .part::before{content:'';position:absolute;inset:-20% -10% auto auto;width:52vw;height:52vw;
   background:radial-gradient(circle,rgba(255,143,28,.14) 0%,rgba(255,143,28,0) 62%);pointer-events:none}
-.part .wrap{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,420px);
+.part .wrap{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);
             gap:clamp(32px,5vw,88px);align-items:end}
-.part .big{font-size:clamp(56px,10vw,150px);font-weight:800;line-height:.92;letter-spacing:-.055em;
-           margin-top:var(--s5)}
+/* 'Automation' 이 가장 긴 단어다. 이 단어가 한 줄에 들어가는 크기로 상한을 잡고,
+   폭이 모자라면 목록을 아래로 내려 제목에 지면을 다 준다 (1200px 브레이크포인트) */
+.part .big{font-size:clamp(48px,8vw,132px);font-weight:800;line-height:.92;letter-spacing:-.055em;
+           margin-top:var(--s5);white-space:nowrap}
 .part .kr{margin-top:var(--s5);font-size:clamp(16px,1.4vw,21px);color:var(--on-dark-2);line-height:1.6}
 .part-l li{display:flex;gap:14px;padding-block:14px;border-top:1px solid var(--dark-line);
            font-size:15px;line-height:1.5;color:var(--on-dark-2)}
@@ -318,13 +320,18 @@ h3,.h3{font-size:clamp(20px,1.8vw,28px);font-weight:700;line-height:1.3;letter-s
 /* ═══════════════════════════════════════════════════════════
    10-B · 영상 행 — 규격이 다른 영상을 같은 높이로 세운다
    ═══════════════════════════════════════════════════════════ */
-.vrow{display:flex;gap:var(--s5);align-items:flex-start;margin-top:var(--s8);flex-wrap:wrap}
+/* 규격이 다른 영상을 같은 높이로 세운다.
+   flex + wrap 은 캡션 길이에 따라 폭이 흔들려 마지막 칸이 다음 줄로 떨어졌다.
+   컬럼 비율을 비율값으로 못박으면(9:16 = 0.5625) 높이가 저절로 맞고 줄바꿈도 없다 */
+.vrow{display:grid;gap:var(--s5);align-items:start;margin-top:var(--s8)}
 .vrow>figure{margin:0;display:flex;flex-direction:column;min-width:0}
-.vrow .vcard{height:clamp(300px,32vw,470px);width:auto;flex:0 0 auto}
-.vrow .vcard--9x16{width:calc(clamp(300px,32vw,470px) * 9 / 16)}
-.vrow .vcard--1x1{width:clamp(300px,32vw,470px)}
-.vrow .vcard--16x9{width:calc(clamp(300px,32vw,470px) * 16 / 9)}
-.vrow figcaption{margin-top:var(--s3);font-size:13px;line-height:1.55;color:var(--ink-3);max-width:34ch}
+.vrow .vcard{width:100%;height:auto}
+.vrow figcaption{margin-top:var(--s3);font-size:13px;line-height:1.55;color:var(--ink-3)}
+/* 9:16 하나 + 1:1 둘 — 세 칸의 높이가 정확히 같아진다 */
+.vrow--mix{grid-template-columns:0.5625fr 1fr 1fr}
+/* 세로 영상만 나열할 때 */
+.vrow--v3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.vrow--v4{grid-template-columns:repeat(4,minmax(0,1fr))}
 .sec--dark .vrow figcaption{color:var(--on-dark-3)}
 
 /* ═══════════════════════════════════════════════════════════
@@ -445,18 +452,34 @@ h3,.h3{font-size:clamp(20px,1.8vw,28px);font-weight:700;line-height:1.3;letter-s
 .bs .hi em{font-style:normal;display:block;margin-top:var(--s3);font-size:26px;font-weight:800;
            letter-spacing:-.04em;color:var(--brand-ink)}
 
-/* 재배분 흐름 */
-.rda{display:grid;grid-template-columns:minmax(0,1fr) 46px minmax(0,1fr);align-items:stretch;
-     margin-top:var(--s5)}
-.rda .bx{border:1px solid var(--line);border-radius:var(--r-sm);padding:var(--s5) var(--s4);
-         text-align:center;display:flex;flex-direction:column;justify-content:center;background:var(--surface)}
-.rda .bx.hi{background:var(--brand);border-color:var(--brand)}
-.rda .bx .k{font-size:13px;color:var(--ink-3)}
-.rda .bx.hi .k{color:rgba(25,25,25,.62)}
-.rda .bx .v{margin-top:var(--s2);font-size:18px;font-weight:800;letter-spacing:-.03em}
-.rda .ar{display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:800;color:var(--dim)}
-.rda-loop{margin-top:var(--s3);padding:var(--s3) var(--s4);border:1px dashed var(--line);
-          border-radius:var(--r-sm);text-align:center;font-size:13.5px;color:var(--ink-3)}
+/* ── 재배분 도식 — 예산 한 덩어리를 나눠 쓰는 트랙 ──
+   네모 두 개를 화살표로 잇는 대신, 하나의 트랙을 경계선으로 가르고
+   그 경계가 오른쪽으로 밀린다는 걸 보여준다. 아래로 되돌아오는 점선이 '다시 측정'이다 */
+.rda{margin-top:var(--s6)}
+.rda-cap{display:flex;justify-content:space-between;font-size:11px;font-weight:700;
+         letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:var(--s3)}
+.rda-track{position:relative;display:grid;grid-template-columns:1fr 1fr;
+           border-radius:var(--r);overflow:hidden;min-height:124px}
+.rda-track .seg{padding:var(--s5) var(--s6);display:flex;flex-direction:column;justify-content:center}
+.rda-track .seg .k{font-size:12.5px}
+.rda-track .seg .v{margin-top:var(--s2);font-size:21px;font-weight:800;letter-spacing:-.035em}
+.rda-track .down{background:var(--panel);color:var(--ink-3)}
+.rda-track .down .v{color:var(--ink-2)}
+.rda-track .up{background:var(--brand);color:rgba(25,25,25,.66);text-align:right}
+.rda-track .up .v{color:var(--ink)}
+/* 경계 — 흰 틈 + 오른쪽으로 미는 손잡이 */
+.rda-track .seam{position:absolute;top:0;bottom:0;left:50%;width:3px;background:var(--surface);
+                 transform:translateX(-50%);z-index:2}
+.rda-track .seam::after{content:'›';position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;
+  background:var(--surface);color:var(--brand-ink);font-size:20px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(25,25,25,.14)}
+/* 되돌아오는 루프 */
+.rda-return{position:relative;margin:0 40px;height:34px;
+            border:1px dashed var(--line);border-top:none;border-radius:0 0 var(--r) var(--r)}
+.rda-return span{position:absolute;left:50%;top:100%;transform:translate(-50%,-50%);
+  background:var(--paper);padding:0 var(--s4);font-size:13px;color:var(--ink-3);white-space:nowrap}
+.sec--panel .rda-return span{background:var(--panel)}
 
 /* 비대칭 비교 (줄인 광고비 ≫ 빠진 매출) */
 .asym{display:grid;grid-template-columns:minmax(0,1fr) 44px minmax(0,1fr);margin-top:var(--s6)}
@@ -565,9 +588,18 @@ html[data-shot] .rail,html[data-shot] .scroll-hint{display:none}
   .wall{grid-template-columns:repeat(4,minmax(0,1fr))}
   .g4{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-@media (max-width:900px){
+/* 목록을 옆에 두면 제목이 들어갈 폭이 모자란다 — 1200 아래에서는 아래로 내린다 */
+@media (max-width:1200px){
   .part .wrap{grid-template-columns:minmax(0,1fr);align-items:start;gap:var(--s7)}
+}
+@media (max-width:900px){
   .flow{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:var(--s6)}
+  .vrow--mix,.vrow--v3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .vrow--v4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rda-track{grid-template-columns:minmax(0,1fr)}
+  .rda-track .up{text-align:left}
+  .rda-track .seam{left:0;right:0;top:50%;bottom:auto;width:auto;height:3px;transform:translateY(-50%)}
+  .rda-track .seam::after{content:'⌄'}
   .flow .sx{padding-right:var(--s5)}
   .flow .sx:nth-child(2n){padding-right:0}
   .loop{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -611,7 +643,7 @@ html[data-shot] .rail,html[data-shot] .scroll-hint{display:none}
   .flow .sx{padding-right:0;padding-top:var(--s5)}
   .flow .sx .d{max-width:none}
   .loop{grid-template-columns:minmax(0,1fr)}
-  .vrow .vcard{height:auto;width:100%!important}
+  .vrow--mix,.vrow--v3,.vrow--v4{grid-template-columns:minmax(0,1fr)}
   .vrow>figure{width:100%}
 }
 
@@ -681,10 +713,15 @@ html[data-shot] .rail,html[data-shot] .scroll-hint{display:none}
   .g4,.flow,.loop,.swall{grid-template-columns:repeat(4,minmax(0,1fr))!important}
   .obs,.g2{grid-template-columns:repeat(2,minmax(0,1fr))!important}
   .tk-grid{grid-template-columns:2fr 1fr 1fr 1fr!important}
+  .vrow--mix{grid-template-columns:0.5625fr 1fr 1fr!important}
+  .vrow--v3{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  .vrow--v4{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+  .rda-track{grid-template-columns:1fr 1fr!important}
+  .rda-track .up{text-align:right}
+  .rda-track .seam{left:50%;right:auto;top:0;bottom:0;width:3px;height:auto;transform:translateX(-50%)}
 
   /* ⑤ 막대는 최종 폭 — JS 가 안 돌아도 채워진 상태 */
   .tl-bar{width:var(--w)!important}
 
-  /* 영상은 포스터 프레임으로 인쇄된다 (video 의 poster 속성) */
-  .vrow .vcard{height:380px}
+  /* 영상은 poster 프레임으로 인쇄된다. 높이는 비율 그리드가 알아서 맞춘다 */
 }
