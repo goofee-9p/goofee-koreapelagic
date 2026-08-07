@@ -1,0 +1,14 @@
+# 원본 소재 — 대외비 PPT(224MB)와 미압축 영상. 저장소에 올리지 않는다.
+_원본/
+*.pptx
+*.mov
+
+# 작업 백업
+*.bak
+*.imgbak
+*~
+
+# OS
+Thumbs.db
+desktop.ini
+.DS_Store
