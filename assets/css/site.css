@@ -162,9 +162,12 @@ h3,.h3{font-size:clamp(20px,1.8vw,28px);font-weight:700;line-height:1.3;letter-s
 }
 .hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,380px);
             gap:clamp(32px,5vw,88px);align-items:center;position:relative;z-index:1}
-.hero-title{font-size:clamp(38px,5.6vw,86px);font-weight:800;line-height:1.1;letter-spacing:-.045em}
+/* 문장이 길어 한 줄이 15자를 넘는다 — 좌측 컬럼 폭에 맞춰 상한을 잡았다.
+   1200px 아래에서는 히어로가 1단으로 접혀 폭이 넉넉해진다 */
+.hero-title{font-size:clamp(26px,3.6vw,58px);font-weight:800;line-height:1.32;letter-spacing:-.04em}
 .hero-title em{font-style:normal;color:var(--brand)}
-.hero-lead{margin-top:var(--s6);max-width:44ch;font-size:clamp(16px,1.3vw,19px);
+.hero-note{margin-top:var(--s4);font-size:12px;color:var(--on-dark-3);letter-spacing:.01em}
+.hero-lead{margin-top:var(--s5);max-width:44ch;font-size:clamp(16px,1.3vw,19px);
            line-height:1.7;color:var(--on-dark-2)}
 .hero-meta{margin-top:var(--s7);display:flex;flex-wrap:wrap;gap:var(--s3)}
 .chip{
@@ -588,9 +591,12 @@ html[data-shot] .rail,html[data-shot] .scroll-hint{display:none}
   .wall{grid-template-columns:repeat(4,minmax(0,1fr))}
   .g4{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-/* 목록을 옆에 두면 제목이 들어갈 폭이 모자란다 — 1200 아래에서는 아래로 내린다 */
+/* 옆에 무언가를 두면 제목이 들어갈 폭이 모자란다 — 1200 아래에서는 세로로 쌓는다 */
 @media (max-width:1200px){
   .part .wrap{grid-template-columns:minmax(0,1fr);align-items:start;gap:var(--s7)}
+  .hero .wrap{grid-template-columns:minmax(0,1fr);gap:var(--s8)}
+  .hero .vcard{max-width:320px}
+  .hero{min-height:auto;padding-block:calc(80px + var(--s8)) var(--s8)}
 }
 @media (max-width:900px){
   .flow{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:var(--s6)}
