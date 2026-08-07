@@ -81,6 +81,31 @@ HTML 을 직접 손봐서 요소를 새로 넣었다면 아래를 한 번 돌려
 python tools/annotate_edit_ids.py
 ```
 
+### 다른 컴퓨터에서 고치기
+
+필요한 건 **Python 3** 하나입니다. PDF 를 새로 뽑을 거라면 Chrome 도 있어야 합니다.
+
+```bash
+git clone https://github.com/goofee-9p/goofee-koreapelagic.git
+cd goofee-koreapelagic
+python tools/edit_server.py
+```
+
+고친 뒤 올리기 — 올리면 몇 분 안에 배포 사이트에도 반영됩니다.
+
+```bash
+git add -A && git commit -m "카피 수정" && git push
+```
+
+돌아와서 이어 작업할 때는 **먼저 받아 옵니다.** 양쪽에서 같은 문장을 고치면 충돌합니다.
+
+```bash
+git pull
+```
+
+> `_원본/` 폴더(대외비 PPT·미압축 영상)는 저장소에 없습니다. 글자를 고치는 데는 필요 없습니다.
+> PDF 는 바이너리라 양쪽에서 각각 새로 뽑아 올리면 충돌합니다. **한쪽에서만** 만들어 올리세요.
+
 ---
 
 ## PDF 다시 만들기
