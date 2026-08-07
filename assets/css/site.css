@@ -214,6 +214,12 @@ h3,.h3{font-size:clamp(20px,1.8vw,28px);font-weight:700;line-height:1.3;letter-s
 .card--asym{border-radius:var(--r) 0}          /* 시그니처 — 섹션당 1~2개만 */
 .card--soft{background:var(--brand-soft);border-color:transparent}
 .card--flat{box-shadow:none}
+/* 소재를 머리에 얹은 카드 — 설명만 있는 상자보다 근거가 먼저 보인다 */
+.card--img{padding:0;overflow:hidden;display:flex;flex-direction:column}
+.card--img>img{width:100%;aspect-ratio:1;object-fit:cover;display:block;background:var(--panel)}
+.card--img .body{padding:var(--s5) var(--s6) var(--s6)}
+.card--img .body .q{margin-top:var(--s3);padding-left:12px;border-left:2px solid var(--brand);
+                    font-size:14px;line-height:1.55;color:var(--ink-2)}
 
 .tag{display:inline-flex;align-items:center;height:26px;padding-inline:11px;
      border-radius:var(--r-pill);background:var(--brand-soft);color:var(--brand-ink);
@@ -332,20 +338,45 @@ h3,.h3{font-size:clamp(20px,1.8vw,28px);font-weight:700;line-height:1.3;letter-s
 .wall-cap{margin-top:var(--s4);font-size:13px;color:var(--ink-3)}
 
 /* ═══════════════════════════════════════════════════════════
+   10-C2 · 소재 아카이브 — 브랜드별로 묶은 풀블리드 그리드
+   ═══════════════════════════════════════════════════════════ */
+.arch{margin-top:var(--s8)}
+.arch-row{display:grid;grid-template-columns:200px minmax(0,1fr);gap:var(--s7);
+          padding-block:var(--s7);border-top:1px solid var(--line);align-items:start}
+.arch-row:last-child{padding-bottom:0}
+.arch-head{position:sticky;top:88px}
+.arch-head .lg{height:30px;display:flex;align-items:center}
+.arch-head .lg img{max-height:28px;max-width:170px;object-fit:contain}
+.arch-head .cat{margin-top:var(--s4)}
+.arch-head .n{margin-top:var(--s3);font-size:40px;font-weight:800;letter-spacing:-.05em;line-height:1;
+              color:var(--brand-ink);font-variant-numeric:tabular-nums}
+.arch-head .n small{font-size:16px;font-weight:700;margin-left:4px;letter-spacing:-.02em}
+.arch-head .d{margin-top:var(--s3);font-size:13.5px;line-height:1.6;color:var(--ink-3)}
+
+.arch-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.arch-grid img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:var(--r-sm);
+               display:block;background:var(--surface);
+               transition:transform 260ms var(--ease), box-shadow 260ms var(--ease)}
+.arch-grid img:hover{transform:translateY(-4px) scale(1.02);box-shadow:var(--shadow);position:relative;z-index:2}
+
+/* ═══════════════════════════════════════════════════════════
    10-D · 프로세스 4단 · 루프
    ═══════════════════════════════════════════════════════════ */
-.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:var(--s6)}
-.flow .sx{padding:var(--s5);border:1px solid var(--line);background:var(--surface)}
-.flow .sx+.sx{border-left:none}
-.flow .sx:first-child{border-radius:var(--r) 0 0 var(--r)}
-.flow .sx:last-child{border-radius:0 var(--r) var(--r) 0}
-.flow .sx .n{font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--dim)}
-.flow .sx .t{margin-top:var(--s2);font-size:17px;font-weight:700;letter-spacing:-.03em;line-height:1.3}
-.flow .sx .d{margin-top:var(--s2);font-size:13.5px;line-height:1.5;color:var(--ink-3)}
-.flow .sx.on{background:var(--ink);border-color:var(--ink)}
-.flow .sx.on .n{color:var(--brand)}
-.flow .sx.on .t{color:#fff}
-.flow .sx.on .d{color:rgba(255,255,255,.62)}
+/* 프로세스 레일 — 네모 상자 대신 하나로 이어진 선과 점.
+   상자를 없애니 단계가 '흐름'으로 읽히고, 모바일에서 카드가 쌓이는 답답함도 사라진다 */
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:var(--s7)}
+.flow .sx{position:relative;padding:var(--s6) var(--s6) 0 0;border-top:2px solid var(--line)}
+.flow .sx:last-child{padding-right:0}
+.flow .sx::before{content:'';position:absolute;top:-5px;left:0;width:12px;height:12px;
+                  border-radius:50%;background:var(--line)}
+.flow .sx .n{font-size:11px;font-weight:800;letter-spacing:.18em;color:var(--dim)}
+.flow .sx .t{margin-top:var(--s3);font-size:19px;font-weight:700;letter-spacing:-.032em;line-height:1.3}
+.flow .sx .d{margin-top:var(--s3);font-size:14px;line-height:1.6;color:var(--ink-3);max-width:30ch}
+/* 강조 단계 — 검은 박스 대신 색으로만 */
+.flow .sx.on{border-top-color:var(--brand)}
+.flow .sx.on::before{background:var(--brand);width:14px;height:14px;top:-6px}
+.flow .sx.on .n{color:var(--brand-ink)}
+.flow .sx.on .t{color:var(--brand-ink)}
 
 .loop{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s5);margin-top:var(--s6)}
 .loop .s4{border-top:2px solid var(--brand);padding-top:var(--s4)}
@@ -359,6 +390,11 @@ h3,.h3{font-size:clamp(20px,1.8vw,28px);font-weight:700;line-height:1.3;letter-s
 .split{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);
        gap:clamp(32px,4vw,72px);margin-top:var(--s8);align-items:start}
 .split-r{padding-left:clamp(24px,3vw,48px);border-left:1.5px solid var(--ink)}
+/* 왼쪽(과정)이 오른쪽(결과)보다 훨씬 길 때 결과가 시야에서 사라지지 않게 붙여 둔다.
+   오른쪽이 더 길면 sticky 는 아무 일도 하지 않는다 */
+@media (min-width:901px){
+  .split-r{position:sticky;top:88px;align-self:start}
+}
 .sec--dark .split-r{border-left-color:var(--brand)}
 .rs-list{margin-top:var(--s5);border-top:1px solid var(--line)}
 .rs-list li{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s4);
@@ -531,9 +567,9 @@ html[data-shot] .rail,html[data-shot] .scroll-hint{display:none}
 }
 @media (max-width:900px){
   .part .wrap{grid-template-columns:minmax(0,1fr);align-items:start;gap:var(--s7)}
-  .flow{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .flow .sx{border-left:1px solid var(--line)!important;border-radius:0!important}
-  .flow .sx:nth-child(n+3){border-top:none}
+  .flow{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:var(--s6)}
+  .flow .sx{padding-right:var(--s5)}
+  .flow .sx:nth-child(2n){padding-right:0}
   .loop{grid-template-columns:repeat(2,minmax(0,1fr))}
   .split{grid-template-columns:minmax(0,1fr);gap:var(--s7)}
   .split-r{padding-left:0;border-left:none;padding-top:var(--s6);border-top:1.5px solid var(--ink)}
@@ -541,6 +577,11 @@ html[data-shot] .rail,html[data-shot] .scroll-hint{display:none}
   .g3{grid-template-columns:repeat(2,minmax(0,1fr))}
   .bsum{grid-template-columns:minmax(0,1fr);gap:var(--s4)}
   .swall{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .arch-row{grid-template-columns:minmax(0,1fr);gap:var(--s5)}
+  .arch-head{position:static;display:flex;align-items:baseline;gap:var(--s5);flex-wrap:wrap}
+  .arch-head .cat,.arch-head .n,.arch-head .d{margin-top:0}
+  .arch-head .n{font-size:28px}
+  .arch-head .d{flex:1 1 100%}
 }
 @media (max-width:1024px){
   .hero .wrap{grid-template-columns:minmax(0,1fr) minmax(240px,300px)}
@@ -564,9 +605,11 @@ html[data-shot] .rail,html[data-shot] .scroll-hint{display:none}
   .pf-photo{width:112px;height:112px}
   .wall{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
   .wall--wide{grid-template-columns:minmax(0,1fr)}
+  .arch-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
   .g2,.g3,.g4{grid-template-columns:minmax(0,1fr)}
-  .flow{grid-template-columns:minmax(0,1fr)}
-  .flow .sx:nth-child(n+2){border-top:none}
+  .flow{grid-template-columns:minmax(0,1fr);row-gap:var(--s5)}
+  .flow .sx{padding-right:0;padding-top:var(--s5)}
+  .flow .sx .d{max-width:none}
   .loop{grid-template-columns:minmax(0,1fr)}
   .vrow .vcard{height:auto;width:100%!important}
   .vrow>figure{width:100%}
@@ -609,8 +652,23 @@ html[data-shot] .rail,html[data-shot] .scroll-hint{display:none}
 
   /* ③ 요소가 페이지 경계에서 잘리지 않게 */
   .card,.ix-c,.bs,.obs .o,.vcard,.tl-row,.figure,.shot,.stat,.plan90 .p,
-  .flow,.loop,.gb,.rda,.asym,.vrow>figure{break-inside:avoid;page-break-inside:avoid}
+  .flow,.loop,.gb,.rda,.asym,.vrow>figure,.arch-row,.arch-grid,.g3,.g4{
+    break-inside:avoid;page-break-inside:avoid}
   h1,h2,h3,.h1,.h2,.h3,.sec-head{break-after:avoid;page-break-after:avoid}
+
+  /* sticky 는 인쇄에서 의미가 없고 위치만 어긋난다 — 고정 해제 */
+  .split-r,.arch-head{position:static!important;top:auto!important}
+
+  /* 소재 아카이브 — 인쇄에서는 라벨을 위로 빼고 그리드에 지면을 다 준다.
+     한 브랜드가 한 장을 차지해 소재가 크게 보인다 */
+  .arch{margin-top:48px}
+  .arch-row{grid-template-columns:minmax(0,1fr)!important;gap:20px;padding-block:32px}
+  .arch-head{display:flex!important;align-items:baseline;gap:24px;flex-wrap:wrap}
+  .arch-head .cat,.arch-head .n,.arch-head .d{margin-top:0}
+  .arch-head .n{font-size:26px}
+  .arch-head .d{flex:1 1 100%;max-width:80ch}
+  .arch-grid{grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:14px}
+  .arch-grid img{box-shadow:none}
 
   /* ④ 인쇄에서도 2단 유지 — 좁은 뷰포트로 오인해 1단으로 접히지 않게 */
   .split{grid-template-columns:minmax(0,1.45fr) minmax(0,1fr)!important}

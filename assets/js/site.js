@@ -84,22 +84,40 @@
     return n.toLocaleString('ko-KR', { minimumFractionDigits: dec, maximumFractionDigits: dec });
   }
 
-  /* ── 영상: 화면 안에서만 재생 ── */
+  /* ── 영상: 화면 안에서만 재생 ──
+     muted + playsinline 이라 자동재생 정책에 걸리지 않는다.
+     화면 밖으로 나가면 멈춰서 배터리와 대역폭을 아낀다 */
   var videos = document.querySelectorAll('video');
+  var inView = new Set();
+
+  function tryPlay(v) {
+    if (document.visibilityState !== 'visible') return;
+    var p = v.play();
+    if (p) p.catch(function () {}); // 정책·저전력 모드로 거절되면 포스터가 남는다
+  }
+
   if ('IntersectionObserver' in window && videos.length) {
     var vio = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         var v = e.target;
-        if (e.isIntersecting) { var p = v.play(); if (p) p.catch(function () {}); }
-        else v.pause();
+        if (e.isIntersecting) { inView.add(v); tryPlay(v); }
+        else { inView.delete(v); v.pause(); }
       });
     }, { threshold: 0.25 });
+
     videos.forEach(function (v) {
       vio.observe(v);
       v.addEventListener('click', function () {
-        if (v.paused) { var p = v.play(); if (p) p.catch(function () {}); } else v.pause();
+        if (v.paused) tryPlay(v); else v.pause();
       });
       v.style.cursor = 'pointer';
+    });
+
+    /* 탭을 떠났다 돌아오면 브라우저가 재생을 멈춰 둔 상태다.
+       교차 이벤트는 새로 발생하지 않으므로 화면 안에 있는 영상을 직접 되살린다 */
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState !== 'visible') return;
+      inView.forEach(tryPlay);
     });
   }
 
