@@ -3,13 +3,13 @@
   "configurations": [
     {
       "name": "portfolio",
-      "runtimeExecutable": "python",
+      "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "5173"],
       "port": 5173
     },
     {
       "name": "portfolio-edit",
-      "runtimeExecutable": "python",
+      "runtimeExecutable": "python3",
       "runtimeArgs": ["tools/edit_server.py"],
       "port": 5173
     }

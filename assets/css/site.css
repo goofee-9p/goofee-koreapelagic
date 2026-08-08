@@ -69,6 +69,15 @@ b,strong{font-weight:700}
    3 · 레이아웃
    ═══════════════════════════════════════════════════════════ */
 .wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad)}
+
+/* 컨테이너 탈출 — .wrap 안에 있으면서 화면 폭을 되찾는다.
+   `50%` 는 .wrap 의 콘텐츠 폭, `50vw` 는 뷰포트 절반이라 차이만큼 양쪽으로 되민다.
+   소재 벽처럼 '양이 곧 주장'인 블록에만 쓴다 — 남용하면 판이 무너진다.
+   overflow-x:clip 은 vw 가 스크롤바를 포함해 생기는 1px 가로 스크롤을 막는다.
+   hidden 이 아니라 clip 인 이유 — hidden 은 자손의 position:sticky 를 죽인다 */
+html,body{overflow-x:clip}
+.bleed{margin-inline:calc(50% - 50vw);padding-inline:clamp(16px,3vw,56px)}
+
 .sec{padding-block:var(--sec-y);position:relative}
 .sec--tight{padding-block:clamp(56px,6vw,104px)}
 .sec--dark{background:var(--dark);color:var(--on-dark)}
@@ -82,7 +91,7 @@ b,strong{font-weight:700}
   font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
   color:var(--brand-ink);
 }
-.eyebrow::before{content:'';width:22px;height:2px;background:var(--brand);border-radius:2px}
+.eyebrow::before{content:'';width:22px;height:2px;background:var(--brand-mark);border-radius:2px}
 .sec--dark .eyebrow{color:var(--brand)}
 .sec--dark .eyebrow::before{background:var(--brand)}
 
@@ -100,6 +109,12 @@ h3,.h3{font-size:clamp(20px,1.8vw,28px);font-weight:700;line-height:1.3;letter-s
 .sec--dark .cap{color:var(--on-dark-3)}
 .label{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3)}
 .num{font-variant-numeric:tabular-nums}
+/* 기여도 — 이 포트폴리오에서 가장 정직해야 하는 숫자다.
+   "기여도 50%" 가 다른 글자와 같은 크기로 묻혀 있으면 아무도 안 읽는다.
+   읽히게 만드는 게 부풀리는 것보다 낫다 */
+.pc{margin-left:2px;font-weight:800;font-size:1.08em;letter-spacing:-.02em;color:var(--brand-ink);
+    font-variant-numeric:tabular-nums}
+.tag--ink .pc,.rs-list .pc{color:var(--brand-ink)}
 .acc{color:var(--brand-ink)}
 .sec--dark .acc{color:var(--brand)}
 
@@ -217,6 +232,22 @@ h3,.h3{font-size:clamp(20px,1.8vw,28px);font-weight:700;line-height:1.3;letter-s
 .card--asym{border-radius:var(--r) 0}          /* 시그니처 — 섹션당 1~2개만 */
 .card--soft{background:var(--brand-soft);border-color:transparent}
 .card--flat{box-shadow:none}
+/* 수치 네 칸 — 상자에 담을 이유가 없다. 테두리·라운드·면을 걷어내면
+   바로 위 단계 컴포넌트와 같은 어휘(눈금 + 값)가 되어 한 덩어리로 읽힌다.
+   같은 섹션에서 상자 네 개가 또 나오면 '카드가 페이지 구조'가 되어 버린다 */
+.card--tick{background:none;border:0;border-top:1px solid var(--line);
+            border-radius:0;box-shadow:none;padding:var(--s4) 0 0}
+/* 픽토그램 — 이모지가 아니라 직접 그린 SVG. 네 칸이 같은 선 굵기(1.6)를 씁니다.
+   라벨 위에 놓아 칸의 시작점을 만들어 준다 — 숫자만 있으면 허전하게 뜬다 */
+/* 아이콘을 라벨 위에 쌓으면 한 칸에 세 덩어리(아이콘·라벨·숫자)가 세로로 서서 어수선하다.
+   오른쪽 위로 빼면 숫자가 주인공 자리를 되찾고 아이콘은 조용한 표식으로 남는다 */
+.card--tick{position:relative}
+.card--tick .tick-ic{position:absolute;top:var(--s4);right:0;
+                     width:20px;height:20px;color:var(--brand-mark);opacity:.85}
+.card--tick .tick-ic svg{width:100%;height:100%;display:block}
+/* 값은 이 칸의 주인공이다. 단위(건)는 따라붙는 잔글씨로 내린다 */
+.card--tick .h3{color:var(--brand-ink)}
+.card--tick .h3 span{color:var(--ink-3);font-weight:700}
 /* 소재를 머리에 얹은 카드 — 설명만 있는 상자보다 근거가 먼저 보인다 */
 .card--img{padding:0;overflow:hidden;display:flex;flex-direction:column}
 .card--img>img{width:100%;aspect-ratio:1;object-fit:cover;display:block;background:var(--panel)}
@@ -254,7 +285,7 @@ h3,.h3{font-size:clamp(20px,1.8vw,28px);font-weight:700;line-height:1.3;letter-s
 /* 담당 브랜드 타임라인 */
 .tl{margin-top:var(--s5)}
 .tl-axis{position:relative;height:18px;margin-bottom:var(--s3)}
-.tl-axis span{position:absolute;top:0;font-size:12px;color:var(--dim);white-space:nowrap;
+.tl-axis span{position:absolute;top:0;font-size:12px;color:var(--ink-3);white-space:nowrap;
               transform:translateX(-50%);font-variant-numeric:tabular-nums}
 .tl-axis span.l{transform:none}
 .tl-axis span.r{transform:translateX(-100%);color:var(--brand-ink);font-weight:700}
@@ -263,7 +294,11 @@ h3,.h3{font-size:clamp(20px,1.8vw,28px);font-weight:700;line-height:1.3;letter-s
 .tl-row .lg{height:30px;display:flex;align-items:center}
 .tl-row .lg img{max-height:30px;max-width:100%;object-fit:contain}
 .tl-track{position:relative;height:44px;background:var(--panel);border-radius:var(--r-sm);overflow:hidden}
-.tl-bar{position:absolute;top:0;bottom:0;border-radius:var(--r-sm);display:flex;align-items:center;
+/* 폭은 여기서 정한다. 예전에는 `.motion` 규칙 안에서만 폭을 줘서,
+   JS 가 안 돌면 막대가 글자 폭으로 쪼그라들어 기간이 틀리게 보였다 —
+   "JS 가 안 돌면 처음부터 최종 상태" 라는 이 프로젝트의 규칙을 어기고 있었다 */
+.tl-bar{position:absolute;top:0;bottom:0;width:var(--w);
+        border-radius:var(--r-sm);display:flex;align-items:center;
         padding-inline:12px;color:#fff;font-size:12.5px;font-weight:600;white-space:nowrap;
         font-variant-numeric:tabular-nums}
 .tl-row .mt{text-align:right;line-height:1.3}
@@ -297,9 +332,17 @@ h3,.h3{font-size:clamp(20px,1.8vw,28px);font-weight:700;line-height:1.3;letter-s
 .ix-c .t{margin-top:var(--s3);font-size:30px;font-weight:800;letter-spacing:-.04em;line-height:1.1}
 .ix-c .d{margin-top:var(--s3);font-size:14.5px;line-height:1.55;color:var(--ink-3)}
 .ix-l{margin-top:var(--s5);padding-top:var(--s4);border-top:1px solid var(--line)}
-.ix-l li{display:flex;gap:10px;padding-block:9px;font-size:14.5px;line-height:1.45}
-.ix-l li i{font-style:normal;flex:0 0 auto;font-size:12px;font-weight:800;color:var(--dim);
-           padding-top:3px;font-variant-numeric:tabular-nums}
+/* flex 를 쓰면 텍스트 안의 <em> 이 '또 하나의 flex 아이템'이 되어 양옆에 gap 이 붙는다.
+   번호를 띄워 놓고 본문은 그냥 흐르게 둔다 — 강조가 단어 사이를 벌리지 않는다 */
+.ix-l li{position:relative;padding-left:28px;padding-block:9px;font-size:14.5px;line-height:1.45}
+/* 번호는 낮은 톤의 브랜드색. 목록 열두 줄이 한눈에 세어진다 */
+.ix-l li i{position:absolute;left:0;top:11px;font-style:normal;font-size:12px;font-weight:800;
+           color:var(--brand-ink);font-variant-numeric:tabular-nums}
+/* 항목마다 변별력 있는 단어 하나만. 여러 개를 칠하면 강조가 아니라 얼룩이 된다 */
+.ix-l li em{font-style:normal;font-weight:700;color:var(--brand-ink)}
+/* 참고자료 — 사례 번호를 받지 않는다. 목록 끝에서 한 단 물러나 앉는다 */
+.ix-l li.ref{margin-top:var(--s2);padding-top:var(--s3);
+             border-top:1px solid var(--line);color:var(--ink-3)}
 
 /* ═══════════════════════════════════════════════════════════
    10-A · 파트 전환 (Statement · 다크)
@@ -372,39 +415,48 @@ h3,.h3{font-size:clamp(20px,1.8vw,28px);font-weight:700;line-height:1.3;letter-s
 /* ═══════════════════════════════════════════════════════════
    10-D · 프로세스 4단 · 루프
    ═══════════════════════════════════════════════════════════ */
-/* 프로세스 레일 — 네모 상자 대신 하나로 이어진 선과 점.
-   상자를 없애니 단계가 '흐름'으로 읽히고, 모바일에서 카드가 쌓이는 답답함도 사라진다 */
-.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:var(--s7)}
-.flow .sx{position:relative;padding:var(--s6) var(--s6) 0 0;border-top:2px solid var(--line)}
-.flow .sx:last-child{padding-right:0}
-.flow .sx::before{content:'';position:absolute;top:-5px;left:0;width:12px;height:12px;
-                  border-radius:50%;background:var(--line)}
-.flow .sx .n{font-size:11px;font-weight:800;letter-spacing:.18em;color:var(--dim)}
-.flow .sx .t{margin-top:var(--s3);font-size:19px;font-weight:700;letter-spacing:-.032em;line-height:1.3}
-.flow .sx .d{margin-top:var(--s3);font-size:14px;line-height:1.6;color:var(--ink-3);max-width:30ch}
-/* 강조 단계 — 검은 박스 대신 색으로만 */
-.flow .sx.on{border-top-color:var(--brand)}
-.flow .sx.on::before{background:var(--brand);width:14px;height:14px;top:-6px}
-.flow .sx.on .n{color:var(--brand-ink)}
-.flow .sx.on .t{color:var(--brand-ink)}
+/* 단계 — 점을 꿴 실이 아니라 '구간'으로 읽히게 한다.
+   점은 아무것도 뜻하지 않았다. 하나만 주황이면 "저건 왜 강조지?" 가 먼저 온다.
+   대신 단계마다 자기 눈금(2px)을 주고 그 아래로 번호·제목·설명이 매달린다.
+   네 개의 눈금이 나란히 서면 그 자체가 '네 구간을 지난다'는 뜻이 된다.
 
-.loop{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s5);margin-top:var(--s6)}
-.loop .s4{border-top:2px solid var(--brand);padding-top:var(--s4)}
-.loop .s4 .n{font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--dim)}
-.loop .s4 .t{margin-top:var(--s2);font-size:18px;font-weight:700;letter-spacing:-.03em;line-height:1.3}
-.loop .s4 .d{margin-top:var(--s2);font-size:13.5px;line-height:1.5;color:var(--ink-3)}
+   .loop 도 같은 물건이었다 — 위 규칙 + 번호 + 제목 + 설명. 둘을 하나로 합쳤다 */
+.flow,.loop{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+            gap:var(--s5);margin-top:var(--s7)}
+.flow .sx,.loop .s4{position:relative;padding-top:var(--s4);border-top:2px solid var(--ink)}
+/* 번호는 서수(序數)다. 섹션 진입을 알리는 .eyebrow 와 같은 것으로 읽히면 안 된다 */
+.flow .sx .n,.loop .s4 .n{font-size:11px;font-weight:800;letter-spacing:.12em;
+                          color:var(--ink-3);font-variant-numeric:tabular-nums}
+/* 제목이 이 컴포넌트의 실체다. 19px 은 본문(17px)보다 겨우 크고 설명(14px)과도 붙어 있어
+   네 단계가 '회색 문단 네 덩어리'로 읽혔다. 11 / 25 / 14 로 벌린다 */
+.flow .sx .t,.loop .s4 .t{margin-top:var(--s2);font-size:clamp(19px,1.75vw,25px);
+                          font-weight:700;letter-spacing:-.035em;line-height:1.25}
+/* split 안에 들어가면 한 칸이 160px 밖에 안 된다 (1440 기준 좌측 767 ÷ 4 − 여백).
+   컨테이너가 좁으면 글자도 내려간다 — 기준은 뷰포트가 아니라 담기는 폭이다 */
+.split .flow .sx .t,.split .loop .s4 .t{font-size:21px}
+.flow .sx .d,.loop .s4 .d{margin-top:var(--s3);font-size:14px;line-height:1.6;
+                          color:var(--ink-3);max-width:32ch}
+
+/* 강조 단계 — 눈금과 번호만 바꾼다. 면은 쓰지 않는다 (docs/design.md §7) */
+.flow .sx.on{border-top-color:var(--brand)}
+.flow .sx.on .n,.flow .sx.on .t{color:var(--brand-ink)}
 
 /* ═══════════════════════════════════════════════════════════
    10-E · Split 2단
    ═══════════════════════════════════════════════════════════ */
+/* 좌우 길이가 다른 건 자연스럽다. 문제는 그게 '덜 만든 것'처럼 보인다는 것이다.
+   원인은 두 가지였다 —
+   ① 세로 선을 오른쪽 컬럼의 테두리로 그려서, 그 컬럼 내용이 끝나는 곳에서 선도 끊겼다.
+   ② 남는 공간이 아래에 그냥 방치돼 좌우 바닥이 어긋난 채 끝났다.
+
+   그래서 컬럼을 행 높이만큼 늘려 선이 영역을 먼저 긋게 하고(①),
+   남는 여백은 흩뿌리지 않고 마지막 요소 위 한 곳에 몰아 바닥을 맞춘다(②).
+   여백이 여러 곳에 조금씩 있으면 실수로 보이고, 한 곳에 모이면 의도로 보인다 */
 .split{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);
-       gap:clamp(32px,4vw,72px);margin-top:var(--s8);align-items:start}
-.split-r{padding-left:clamp(24px,3vw,48px);border-left:1.5px solid var(--ink)}
-/* 왼쪽(과정)이 오른쪽(결과)보다 훨씬 길 때 결과가 시야에서 사라지지 않게 붙여 둔다.
-   오른쪽이 더 길면 sticky 는 아무 일도 하지 않는다 */
-@media (min-width:901px){
-  .split-r{position:sticky;top:88px;align-self:start}
-}
+       gap:clamp(32px,4vw,72px);margin-top:var(--s8);align-items:stretch}
+.split-r{display:flex;flex-direction:column;
+         padding-left:clamp(24px,3vw,48px);border-left:1.5px solid var(--ink)}
+.split-r > :last-child{margin-top:auto;padding-top:var(--s5)}
 .sec--dark .split-r{border-left-color:var(--brand)}
 .rs-list{margin-top:var(--s5);border-top:1px solid var(--line)}
 .rs-list li{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s4);
@@ -455,17 +507,45 @@ h3,.h3{font-size:clamp(20px,1.8vw,28px);font-weight:700;line-height:1.3;letter-s
 .bs .hi em{font-style:normal;display:block;margin-top:var(--s3);font-size:26px;font-weight:800;
            letter-spacing:-.04em;color:var(--brand-ink)}
 
+/* ── 이월 도식 — 관리표가 다음 달로 넘어가는 구조 ──
+   "TO-BE 가 다음 달 AS-WAS 가 된다" 를 글로 또 쓰면 바로 위 4단과 같은 말이 두 번이다.
+   표 두 장을 나란히 놓고 채워진 칸이 자리를 옮기는 것으로 보여준다.
+   칸을 채운 색이 곧 '넘어가는 그것'이다 */
+.carry{display:grid;grid-template-columns:1fr auto 1fr;align-items:end;
+       gap:var(--s4);margin-top:var(--s7)}
+.carry .sheet{min-width:0}
+.carry .mo{font-size:11px;font-weight:800;letter-spacing:.12em;color:var(--ink-3);
+           margin-bottom:var(--s2)}
+.carry .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;
+             font-size:10px;font-weight:800;letter-spacing:.02em;color:var(--ink-3);text-align:center}
+.carry .cols .on{color:var(--brand-ink)}
+.carry .cells{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:5px}
+.carry .cells i{display:block;height:38px;border-radius:4px;background:var(--panel);
+                border:1px solid var(--line)}
+.carry .cells i.on{background:var(--brand);border-color:var(--brand)}
+/* 두 표를 잇는 다리. 화살촉은 clip-path 로 그린다 */
+.carry .hop{position:relative;padding:0 var(--s2) 16px;text-align:center}
+.carry .hop span{font-size:10px;font-weight:800;letter-spacing:.12em;color:var(--brand-ink)}
+.carry .hop::before{content:'';position:absolute;left:2px;right:12px;bottom:12px;height:1.5px;
+                    background:var(--brand-mark)}
+.carry .hop::after{content:'';position:absolute;right:0;bottom:8px;width:9px;height:10px;
+                   background:var(--brand-mark);clip-path:polygon(0 0,100% 50%,0 100%)}
+
 /* ── 재배분 도식 — 예산 한 덩어리를 나눠 쓰는 트랙 ──
    네모 두 개를 화살표로 잇는 대신, 하나의 트랙을 경계선으로 가르고
    그 경계가 오른쪽으로 밀린다는 걸 보여준다. 아래로 되돌아오는 점선이 '다시 측정'이다 */
 .rda{margin-top:var(--s6)}
 .rda-cap{display:flex;justify-content:space-between;font-size:11px;font-weight:700;
-         letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:var(--s3)}
+         letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-bottom:var(--s3)}
+/* 트랙에 테두리를 둔다 — 왼쪽 반이 `--panel` 이라 회색 면 위에 놓이면 배경에 녹아
+   '하나의 예산을 둘로 가른다'는 구조가 사라진다. 어느 면 위에서도 트랙은 트랙으로 보여야 한다 */
 .rda-track{position:relative;display:grid;grid-template-columns:1fr 1fr;
-           border-radius:var(--r);overflow:hidden;min-height:124px}
-.rda-track .seg{padding:var(--s5) var(--s6);display:flex;flex-direction:column;justify-content:center}
-.rda-track .seg .k{font-size:12.5px}
-.rda-track .seg .v{margin-top:var(--s2);font-size:21px;font-weight:800;letter-spacing:-.035em}
+           border:1px solid var(--line);border-radius:var(--r);overflow:hidden;min-height:92px}
+/* 124px 짜리 큰 면 두 개에 12px 글자가 떠 있으면 '대충 칠한 상자'로 보인다.
+   트랙은 트랙답게 낮추고, 글자는 면에 잠기지 않게 왼쪽 정렬로 붙인다 */
+.rda-track .seg{padding:var(--s4) var(--s5);display:flex;flex-direction:column;justify-content:center}
+.rda-track .seg .k{font-size:12px;letter-spacing:.02em}
+.rda-track .seg .v{margin-top:var(--s1);font-size:19px;font-weight:800;letter-spacing:-.035em}
 .rda-track .down{background:var(--panel);color:var(--ink-3)}
 .rda-track .down .v{color:var(--ink-2)}
 .rda-track .up{background:var(--brand);color:rgba(25,25,25,.66);text-align:right}
@@ -473,26 +553,40 @@ h3,.h3{font-size:clamp(20px,1.8vw,28px);font-weight:700;line-height:1.3;letter-s
 /* 경계 — 흰 틈 + 오른쪽으로 미는 손잡이 */
 .rda-track .seam{position:absolute;top:0;bottom:0;left:50%;width:3px;background:var(--surface);
                  transform:translateX(-50%);z-index:2}
-.rda-track .seam::after{content:'›';position:absolute;top:50%;left:50%;
-  transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;
-  background:var(--surface);color:var(--brand-ink);font-size:20px;font-weight:800;
-  display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(25,25,25,.14)}
-/* 되돌아오는 루프 */
+/* 손잡이 — '›' 글자를 쓰면 캐러셀 화살표로 읽힌다. 여기서 말하려는 건 방향이다.
+   원판과 삼각형을 직접 그려서 '경계가 오른쪽으로 밀린다'를 분명히 한다 */
+.rda-track .seam::before{content:'';position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;
+  background:var(--surface);box-shadow:0 2px 10px rgba(25,25,25,.18)}
+/* 삼각형은 clip-path 로 그린다. 투명 테두리로 삼각형을 만드는 옛 수법은
+   '두꺼운 한쪽 테두리' 로 남아 다른 규칙과 헷갈린다 — 도형은 도형으로 그린다.
+   margin 은 시각 중심 보정: 삼각형의 무게중심은 기하 중심보다 왼쪽이다 */
+.rda-track .seam::after{content:'';position:absolute;top:50%;left:50%;
+  margin-left:-3px;margin-top:-7px;width:11px;height:14px;
+  background:var(--brand-ink);clip-path:polygon(0 0,100% 50%,0 100%)}
+/* 되돌아오는 루프 — 점선이 너무 옅으면 '다시 측정해 갱신한다'는 고리가 안 보인다 */
 .rda-return{position:relative;margin:0 40px;height:34px;
-            border:1px dashed var(--line);border-top:none;border-radius:0 0 var(--r) var(--r)}
+            border:1.5px dashed var(--mute-fill);border-top:none;border-radius:0 0 var(--r) var(--r)}
 .rda-return span{position:absolute;left:50%;top:100%;transform:translate(-50%,-50%);
   background:var(--paper);padding:0 var(--s4);font-size:13px;color:var(--ink-3);white-space:nowrap}
 .sec--panel .rda-return span{background:var(--panel)}
 
-/* 비대칭 비교 (줄인 광고비 ≫ 빠진 매출) */
-.asym{display:grid;grid-template-columns:minmax(0,1fr) 44px minmax(0,1fr);margin-top:var(--s6)}
-.asym .bx{padding:var(--s4);text-align:center;border-radius:var(--r-sm)}
-.asym .bx.a{background:var(--brand);color:var(--ink)}
-.asym .bx.b{background:var(--panel)}
-.asym .bx .k{font-size:13px;opacity:.68}
-.asym .bx .v{font-size:28px;font-weight:800;letter-spacing:-.045em;margin-top:var(--s1);line-height:1;
-             font-variant-numeric:tabular-nums}
-.asym .gt{display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:800;color:var(--dim)}
+/* 비대칭 비교 — 요지는 "39% 줄였는데 10%만 빠졌다" 는 격차다.
+   같은 크기 상자 두 개를 '≫' 글자로 잇는 방식은 그 격차를 그리지 않는다. 말로만 한다.
+   같은 축 위에 실제 비율(39 : 10)로 그으면 눈이 문장보다 먼저 안다 */
+.asym{margin-top:var(--s6);display:grid;gap:var(--s3)}
+.asym .row{display:grid;grid-template-columns:84px minmax(0,1fr) 76px;
+           align-items:center;gap:var(--s4)}
+.asym .row .k{font-size:13px;color:var(--ink-3);line-height:1.35}
+.asym .row .tr{height:38px;background:var(--panel);border-radius:var(--r-sm);overflow:hidden}
+.asym .row .tr i{display:block;height:100%;width:var(--w);border-radius:var(--r-sm);
+                 transform-origin:left center}
+.asym .row.a .tr i{background:var(--brand)}
+.asym .row.b .tr i{background:var(--mute-fill)}
+.asym .row .v{font-size:26px;font-weight:800;letter-spacing:-.045em;line-height:1;
+              font-variant-numeric:tabular-nums;text-align:right}
+.asym .row.a .v{color:var(--brand-ink)}
+.asym .row.b .v{color:var(--ink-2)}
 
 /* 도구 화면 프레임 */
 .shot{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface)}
@@ -513,7 +607,180 @@ h3,.h3{font-size:clamp(20px,1.8vw,28px);font-weight:700;line-height:1.3;letter-s
 .obs .o .d{margin-top:var(--s3);font-size:14.5px;line-height:1.6;color:var(--ink-3)}
 .obs .o .ex{margin-top:var(--s4);padding:var(--s4);background:var(--panel);border-radius:var(--r-sm);
             font-size:13.5px;line-height:1.7;color:var(--ink-2)}
+/* 강약 3단 — 인용문 안 '신호어' 는 색까지, 설명문 핵심어는 굵기만, 나머지는 잉크.
+   전부 칠하면 강조가 아니라 얼룩이 된다 */
 .obs .o .ex b{color:var(--brand-ink);font-weight:700}
+.obs .o .ex em{font-style:normal;font-weight:700;color:var(--brand-ink)}
+.obs .o .d b{font-weight:700;color:var(--ink)}
+
+/* 스크롤 도입 — 소재가 먼저 깔리고, 내려가면 물러나면서 분석이 들어온다.
+   근거로 쓰는 게 아니라 "쭉 넘겨봤다" 는 인상이다.
+   재생 버튼이 없는 poster 원본을 받아 썼다 — 화면을 잘라 쓰면 가운데 버튼이 남는다.
+
+   기본 상태가 곧 최종 상태다. 스크롤 애니메이션을 지원하지 않는 브라우저,
+   모션을 끈 사람, 인쇄 — 어디서든 그냥 '소재 격자' 로 남아 읽는 데 지장이 없다 */
+.adintro{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;
+         margin-bottom:var(--s9)}
+.adintro-cap{grid-column:1/-1;font-size:11px;font-weight:700;letter-spacing:.18em;
+             text-transform:uppercase;color:var(--ink-3);margin-bottom:var(--s2)}
+.adintro img{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:10px;display:block}
+
+@supports (animation-timeline: view()){
+  @media screen{
+    /* 들어옴 → 머무름 → 쓸려 나감 을 하나의 궤적으로 묶는다.
+       나타났다 사라지기만 하면 '슬라이드 넘김' 이지 '넘겨보는 것' 이 아니다.
+
+       열마다 빠지는 방향을 부채꼴로 벌린다 — 가운데는 위로, 바깥은 옆으로.
+       카드를 손으로 쓸어 치우는 결이 나온다.
+
+       blur 는 쓰지 않는다. 열 장을 매 프레임 다시 래스터하면 끊긴다 —
+       transform 과 opacity 만 쓰면 합성 단계에서 끝난다 */
+    .adintro img{
+      animation:adSweep linear both;
+      animation-timeline:view();
+      animation-range:cover 0% cover 96%;
+      will-change:transform,opacity;
+    }
+    /* 방향 — 1열은 왼쪽 멀리, 3열은 곧장 위로, 5열은 오른쪽 멀리 */
+    .adintro img:nth-of-type(5n+1){--dx:-190px;--rot:-9deg}
+    .adintro img:nth-of-type(5n+2){--dx:-88px; --rot:-4.5deg}
+    .adintro img:nth-of-type(5n+3){--dx:0px;   --rot:0deg}
+    .adintro img:nth-of-type(5n+4){--dx:88px;  --rot:4.5deg}
+    .adintro img:nth-of-type(5n){  --dx:190px; --rot:9deg}
+    /* 시작 시점을 열마다 어긋낸다 — 한꺼번에 안 빠지고 차례로 '휙휙' 넘어간다 */
+    .adintro img:nth-of-type(5n+2){animation-range:cover 3%  cover 96%}
+    .adintro img:nth-of-type(5n+3){animation-range:cover 6%  cover 96%}
+    .adintro img:nth-of-type(5n+4){animation-range:cover 9%  cover 96%}
+    .adintro img:nth-of-type(5n)  {animation-range:cover 12% cover 96%}
+    /* 아랫줄은 한 박자 늦게 */
+    .adintro img:nth-of-type(n+6){animation-delay:0s}
+
+    @keyframes adSweep{
+      0%   {opacity:0; transform:translate3d(0,44px,0) scale(.92)}
+      7%   {opacity:1; transform:none}          /* 즉시 자리 잡고 */
+      64%  {opacity:1; transform:none}          /* 읽을 만큼 머물다가 */
+      93%  {opacity:0;                          /* 짧은 구간에 확 쓸려 나간다 */
+            transform:translate3d(var(--dx,0), -210px, 0) rotate(var(--rot,0)) scale(.7)}
+      100% {opacity:0;
+            transform:translate3d(var(--dx,0), -210px, 0) rotate(var(--rot,0)) scale(.7)}
+    }
+
+    .adintro-cap{animation:adCapOut linear both;animation-timeline:view();
+                 animation-range:cover 0% cover 74%}
+    @keyframes adCapOut{
+      0%  {opacity:0;transform:translateY(12px)}
+      8%  {opacity:1;transform:none}
+      70% {opacity:1;transform:none}
+      100%{opacity:0;transform:translateY(-52px)}
+    }
+  }
+}
+/* 모션을 끈 사람에게는 걷히지 않고 그대로 있는다 */
+@media (prefers-reduced-motion:reduce){
+  .adintro img,.adintro-cap{animation:none}
+}
+@media (max-width:860px){
+  .adintro{grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+}
+
+/* ── 다크 섹션 위의 컴포넌트 ──
+   회사 분석은 이 문서의 결론이다. 면을 어둡게 끊어 집중을 올린다.
+   흰 카드를 그대로 얹으면 카드가 떠서 '밝은 섹션에 검은 배경만 깐' 꼴이 된다 —
+   면·선·글자를 전부 어두운 쪽 토큰으로 옮긴다.
+
+   오렌지도 바꿔야 한다. `--brand-ink`(#B85A05)는 어두운 면에서 3.77:1 로 떨어진다.
+   어두운 면 위에서는 `--brand`(#FF8F1C, 7.70:1)가 맞는 선택이다 (docs/design.md §2-2) */
+.sec--dark .card{background:var(--dark-2);border-color:var(--dark-line);box-shadow:none}
+.sec--dark .stat .k{color:var(--on-dark-3)}
+.sec--dark .stat .v{color:var(--on-dark)}
+.sec--dark .stat.is-brand .v{color:var(--brand)}
+.sec--dark .label{color:var(--on-dark-3)}
+.sec--dark .note{color:var(--on-dark-2);border-left-color:var(--brand)}
+
+.sec--dark .obs .o{background:var(--dark-2);border-color:var(--dark-line)}
+.sec--dark .obs .o .t{color:var(--on-dark)}
+.sec--dark .obs .o .d{color:var(--on-dark-2)}
+.sec--dark .obs .o .d b{color:var(--on-dark)}
+.sec--dark .obs .o .ex{background:rgba(255,255,255,.055);color:var(--on-dark-2)}
+.sec--dark .obs .o .ex b,.sec--dark .obs .o .ex em{color:var(--brand)}
+
+.sec--dark .plan90 .p{border-top-color:var(--brand)}
+.sec--dark .plan90 .p .k{color:var(--brand)}
+.sec--dark .plan90 .p .t{color:var(--on-dark)}
+.sec--dark .plan90 .p li{color:var(--on-dark-2)}
+.sec--dark .plan90 .p li::before{background:var(--brand)}
+/* 캡션은 그라데이션의 '아직 밝은' 구간에 앉는다 — 다크 섹션이라고 흰 글자를 쓰면 사라진다.
+   면 색이 아니라 그 자리의 실제 밝기를 보고 정한다 */
+#fit .adintro-cap{color:var(--ink-3)}
+
+/* 다크로 넘어가는 이음매 —
+   앞 섹션(au-team)은 밝은 면이고 뒤(contact)는 이미 어둡다. 그래서 위쪽만 이어 주면 된다.
+   면이 딱 끊기면 "여기부터 다른 문서" 처럼 보인다. 섹션 위 여백을 쓰면서 서서히 어두워지면
+   같은 문서 안에서 조명이 꺼지는 것처럼 읽힌다 */
+/* 다크로 내려가는 이음매.
+   224px 짜리로 잡았더니 '띠' 로 보였다 — 조명이 꺼지는 게 아니라 선이 하나 그어진 꼴이다.
+   660px 에 걸쳐 길게 내리고, 정지점을 여러 개 두어 중간이 뭉개지지 않게 한다
+   (밝→어두 2점 보간은 가운데가 탁한 회색으로 주저앉는다).
+
+   긴 어두운 그라데이션은 8비트 계조에서 띠가 보인다. 미세한 결을 얹어 그걸 흩는다 —
+   이미지 파일이 아니라 SVG feTurbulence 를 data URI 로 넣어 요청이 늘지 않는다 */
+#fit{
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.055'/%3E%3C/svg%3E"),
+    linear-gradient(180deg,
+      var(--paper) 0px,
+      #ddd9d4 140px,
+      #9c968f 300px,
+      #514c47 450px,
+      #262320 560px,
+      var(--dark) 660px);
+  background-repeat:repeat,no-repeat;
+  background-size:200px 200px,100% 100%;
+}
+
+/* ── 결론 제목 ──
+   위에서 소재가 쓸려 나간 자리에 들어오는 문장이다. h2 기본(42px 상한)으로는
+   그 무게를 못 받는다 — 이 섹션에서만 display 급으로 올린다.
+   '뜯어봤다' 는 행위가 요지라 동사에 브랜드색을 준다.
+   어두운 면 위이므로 `--brand`(7.70:1) 를 쓴다. `--brand-ink` 는 3.77:1 로 떨어진다 */
+#fit .sec-head h2{font-size:clamp(29px,4.3vw,62px);font-weight:800;
+                  letter-spacing:-.05em;line-height:1.1}
+#fit .sec-head h2 em{font-style:normal;color:var(--brand)}
+#fit .sec-head .lead{font-size:clamp(17px,1.5vw,21px);margin-top:var(--s6)}
+
+@supports (animation-timeline: view()){
+  @media screen{
+    /* 소재가 걷히는 구간과 겹치게 잡는다 — 위가 비워지면서 아래가 올라온다.
+       아래에서 위로 걷히는 clip 이라 '덮여 있던 것이 드러나는' 결이 된다 */
+    #fit .sec-head{animation:fitReveal linear both;animation-timeline:view();
+                   animation-range:cover 30% cover 62%}
+    /* clip 으로 걷어 올리다가 글자 한가운데가 가로로 잘렸다.
+       스크롤 도중에 멈추면 '걷히는 중' 이 아니라 '깨진 렌더' 로 보인다.
+       글자를 자르는 연출은 쓰지 않는다 — 올라오면서 또렷해지는 것으로 충분하다 */
+    @keyframes fitReveal{
+      from{opacity:0;transform:translateY(64px) scale(.94)}
+      to  {opacity:1;transform:none}
+    }
+  }
+}
+@media (prefers-reduced-motion:reduce){ #fit .sec-head{animation:none} }
+
+/* ── 가운데 정렬 — 짧은 것만 ──
+   제목·리드·수치처럼 짧은 덩어리는 가운데로 모으면 집중이 생긴다.
+   그러나 관찰 카드 본문과 90일 계획 목록은 왼쪽에 둔다 —
+   여러 줄 문단을 가운데 정렬하면 줄 시작점이 매 줄 달라져 읽는 속도가 떨어진다.
+   '가운데 정렬'은 레이아웃의 문제이지 문단의 문제가 아니다 */
+#fit .sec-head{max-width:760px;margin-inline:auto;text-align:center}
+#fit .sec-head .eyebrow{justify-content:center}
+#fit .g3{max-width:1060px;margin-inline:auto}
+#fit .g3 .card{text-align:center}
+#fit .adintro{max-width:1100px;margin-inline:auto}
+#fit .adintro-cap{text-align:center}
+/* 90일 계획은 머리만 가운데, 목록은 왼쪽 */
+#fit .plan90{max-width:1060px;margin-inline:auto}
+#fit .mt8.rv > .label,#fit .mt8.rv > .h3{text-align:center}
+#fit .mt8.rv > .note{max-width:760px;margin-inline:auto}
+#fit .obs{max-width:1060px;margin-inline:auto}
 
 /* 90일 계획 3단 */
 .plan90{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5);margin-top:var(--s7)}
@@ -567,13 +834,44 @@ h3,.h3{font-size:clamp(20px,1.8vw,28px);font-weight:700;line-height:1.3;letter-s
   .motion .rv{opacity:0;transform:translateY(20px);
               transition:opacity var(--dur) var(--ease), transform var(--dur) var(--ease)}
   .motion .rv.in{opacity:1;transform:none}
-  .motion .tl-bar{width:0!important;transition:width 700ms var(--ease)}
-  .motion .tl-bar.in{width:var(--w)!important}
+  /* 히어로는 진입 모션에서 제외한다. 첫 화면은 이미 보이는 화면이라
+     '나타날' 것이 없다 — 관찰자 콜백이 도는 사이 채용 담당자는 빈 화면을 본다.
+     스크롤해서 만나는 것만 나타난다 */
+  .motion .hero .rv{opacity:1;transform:none;transition:none}
+  /* 막대는 이미 제 폭으로 서 있고, 왼쪽에서 오른쪽으로 '드러난다'.
+     width 를 키우면 레이아웃이 매 프레임 다시 계산되고, 폭 0 일 때 안의 기간 텍스트가
+     막대 밖으로 삐져나온다. clip-path 는 합성 단계라 둘 다 없다 */
+  .motion .tl-bar{clip-path:inset(0 100% 0 0);transition:clip-path 700ms var(--ease)}
+  .motion .tl-bar.in{clip-path:inset(0 0 0 0)}
+
+  /* ── 그래프 진입 ──
+     막대와 비교 막대는 안에 글자가 없다. 그래서 width/height 대신 transform 으로 키운다 —
+     레이아웃을 건드리지 않아 위에 붙은 값 라벨이 흔들리지 않는다.
+     (.tl-bar 만 width 를 쓰는 건 막대 안에 기간 텍스트가 들어 있어서다) */
+  .motion .rv .gb-bars .bar i{transform:scaleY(0);transform-origin:bottom;
+                              transition:transform 700ms var(--ease)}
+  .motion .rv.in .gb-bars .bar i{transform:scaleY(1)}
+  .motion .rv .gb-bars .bar:nth-child(2) i{transition-delay:90ms}
+  .motion .rv .gb-g > *:nth-child(2) .bar i{transition-delay:120ms}
+  .motion .rv .gb-g > *:nth-child(3) .bar i{transition-delay:240ms}
+
+  .motion .rv .asym .tr i{transform:scaleX(0);transition:transform 760ms var(--ease)}
+  .motion .rv.in .asym .tr i{transform:scaleX(1)}
+  .motion .rv .asym .row.b .tr i{transition-delay:160ms}
+
+  /* 슬로프 — 선을 그어 나간다. 격차(쐐기)는 선이 다 그어진 뒤에 채워진다 */
+  .motion .rv .slope .ln{stroke-dasharray:260;stroke-dashoffset:260;
+                         transition:stroke-dashoffset 900ms var(--ease)}
+  .motion .rv.in .slope .ln{stroke-dashoffset:0}
+  .motion .rv .slope .wedge,.motion .rv .slope .pt,.motion .rv .slope .lb{opacity:0;
+                         transition:opacity 500ms 620ms}
+  .motion .rv.in .slope .wedge{opacity:.2}
+  .motion .rv.in .slope .pt,.motion .rv.in .slope .lb{opacity:1}
 }
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   .motion .rv,.motion .rv.in{opacity:1!important;transform:none!important;transition:none!important}
-  .motion .tl-bar{width:var(--w)!important;transition:none!important}
+  .motion .tl-bar{clip-path:none!important;transition:none!important}
   .scroll-hint i::after{animation:none}
 }
 
@@ -596,20 +894,21 @@ html[data-shot] .rail,html[data-shot] .scroll-hint{display:none}
 @media (max-width:1200px){
   .part .wrap{grid-template-columns:minmax(0,1fr);align-items:start;gap:var(--s7)}
   .hero .wrap{grid-template-columns:minmax(0,1fr);gap:var(--s8)}
-  .hero .vcard{max-width:320px}
+  /* 1단으로 접히면 제목이 쓸 수 있는 폭이 두 배가 된다.
+     2단 기준의 3.6vw 를 그대로 두면 제목이 화면 절반만 쓰고 오른쪽이 비어 버린다 */
+  .hero-title{font-size:clamp(28px,6.2vw,58px)}
+  .hero-lead{max-width:52ch}
+  .hero .vcard{max-width:400px}
   .hero{min-height:auto;padding-block:calc(80px + var(--s8)) var(--s8)}
 }
 @media (max-width:900px){
-  .flow{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:var(--s6)}
+  .flow,.loop{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:var(--s6)}
   .vrow--mix,.vrow--v3{grid-template-columns:repeat(2,minmax(0,1fr))}
   .vrow--v4{grid-template-columns:repeat(2,minmax(0,1fr))}
   .rda-track{grid-template-columns:minmax(0,1fr)}
   .rda-track .up{text-align:left}
   .rda-track .seam{left:0;right:0;top:50%;bottom:auto;width:auto;height:3px;transform:translateY(-50%)}
   .rda-track .seam::after{content:'⌄'}
-  .flow .sx{padding-right:var(--s5)}
-  .flow .sx:nth-child(2n){padding-right:0}
-  .loop{grid-template-columns:repeat(2,minmax(0,1fr))}
   .split{grid-template-columns:minmax(0,1fr);gap:var(--s7)}
   .split-r{padding-left:0;border-left:none;padding-top:var(--s6);border-top:1.5px solid var(--ink)}
   .wall{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -622,8 +921,9 @@ html[data-shot] .rail,html[data-shot] .scroll-hint{display:none}
   .arch-head .n{font-size:28px}
   .arch-head .d{flex:1 1 100%}
 }
+/* 히어로는 1200 에서 이미 1단으로 접었다. 여기서 2단을 되살리면
+   861–1024 구간에서만 다시 2단이 되어 카드가 눌린다 — .about 만 남긴다 */
 @media (max-width:1024px){
-  .hero .wrap{grid-template-columns:minmax(0,1fr) minmax(240px,300px)}
   .about{grid-template-columns:230px minmax(0,1fr)}
 }
 @media (max-width:860px){
@@ -644,12 +944,12 @@ html[data-shot] .rail,html[data-shot] .scroll-hint{display:none}
   .pf-photo{width:112px;height:112px}
   .wall{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
   .wall--wide{grid-template-columns:minmax(0,1fr)}
-  .arch-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  /* 브랜드당 10종이다. 10 을 나누어 떨어지게 하는 열 수는 2 와 5 뿐 —
+     3 열이면 마지막 줄에 하나만 남아 미완성으로 보인다 (docs/design.md §7) */
+  .arch-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
   .g2,.g3,.g4{grid-template-columns:minmax(0,1fr)}
-  .flow{grid-template-columns:minmax(0,1fr);row-gap:var(--s5)}
-  .flow .sx{padding-right:0;padding-top:var(--s5)}
-  .flow .sx .d{max-width:none}
-  .loop{grid-template-columns:minmax(0,1fr)}
+  .flow,.loop{grid-template-columns:minmax(0,1fr);row-gap:var(--s5)}
+  .flow .sx .d,.loop .s4 .d{max-width:none}
   .vrow--mix,.vrow--v3,.vrow--v4{grid-template-columns:minmax(0,1fr)}
   .vrow>figure{width:100%}
 }
@@ -697,6 +997,12 @@ html[data-shot] .rail,html[data-shot] .scroll-hint{display:none}
 
   /* sticky 는 인쇄에서 의미가 없고 위치만 어긋난다 — 고정 해제 */
   .split-r,.arch-head{position:static!important;top:auto!important}
+
+  /* 도입 소재는 지면에서도 그대로 — 다만 걷히는 모션은 없다 */
+  .adintro img,.adintro-cap{animation:none!important;opacity:1!important;filter:none!important}
+
+  /* 지면 폭은 1440 으로 고정돼 있다. 화면용 컨테이너 탈출을 그대로 두면 지면 밖으로 나간다 */
+  .bleed{margin-inline:0!important;padding-inline:0!important}
 
   /* 소재 아카이브 — 인쇄에서는 라벨을 위로 빼고 그리드에 지면을 다 준다.
      한 브랜드가 한 장을 차지해 소재가 크게 보인다 */

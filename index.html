@@ -8,6 +8,9 @@
 <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
 <meta name="googlebot" content="noindex,nofollow">
 <link rel="stylesheet" href="assets/css/site.css">
+<!-- 첫 화면의 그림은 히어로 영상의 poster 다. 영상이 뜨기 전에 이것이 자리를 잡아야
+     채용 담당자가 여는 순간 빈 카드를 보지 않는다 -->
+<link rel="preload" as="image" href="assets/poster/ad_ninja_blast_9x16.jpg" fetchpriority="high">
 </head>
 <body>
 
@@ -74,7 +77,7 @@
 
     <div class="about">
       <div class="rv">
-        <img class="pf-photo" src="assets/img/photo.png" alt="구병기">
+        <img class="pf-photo" src="assets/img/photo.png" alt="구병기" loading="lazy" decoding="async">
         <p class="pf-name" data-edit="e014">구병기</p>
         <p class="pf-role" data-edit="e015">퍼포먼스 마케터</p>
         <div class="pf-contact">
@@ -102,7 +105,7 @@
           </div>
 
           <div class="tl-row">
-            <div class="lg"><img src="assets/img/logo_discovery.png" alt="F&amp;F 디스커버리"></div>
+            <div class="lg"><img src="assets/img/logo_discovery.png" alt="F&amp;F 디스커버리" loading="lazy" decoding="async"></div>
             <div class="tl-track">
               <div class="tl-bar" style="--w:52.2%;left:0;background:var(--b-disco)">24.09 – 25.09</div>
             </div>
@@ -110,7 +113,7 @@
           </div>
 
           <div class="tl-row">
-            <div class="lg"><img src="assets/img/logo_sharkninja.png" alt="샤크닌자"></div>
+            <div class="lg"><img src="assets/img/logo_sharkninja.png" alt="샤크닌자" loading="lazy" decoding="async"></div>
             <div class="tl-track">
               <div class="tl-bar" style="--w:17.4%;left:60.9%;background:var(--b-shark)">25.11 – 26.03</div>
             </div>
@@ -118,7 +121,7 @@
           </div>
 
           <div class="tl-row">
-            <div class="lg"><img src="assets/img/logo_zinus.png" alt="지누스"></div>
+            <div class="lg"><img src="assets/img/logo_zinus.png" alt="지누스" loading="lazy" decoding="async"></div>
             <div class="tl-track">
               <div class="tl-bar" style="--w:30.4%;left:69.6%;background:var(--b-zinus)">26.01 – 현재</div>
             </div>
@@ -130,8 +133,8 @@
         <div class="card card--soft card--flat" style="margin-top:var(--s6);display:flex;
              align-items:center;gap:var(--s5);flex-wrap:wrap;padding:var(--s5) var(--s6)">
           <span class="label" style="color:var(--brand-ink)" data-edit="e023">협력 프로젝트</span>
-          <img src="assets/img/logo_cosrx.png" alt="COSRX" style="height:20px">
-          <img src="assets/img/logo_medicube.png" alt="medicube" style="height:20px">
+          <img src="assets/img/logo_cosrx.png" alt="COSRX" style="height:20px" loading="lazy" decoding="async">
+          <img src="assets/img/logo_medicube.png" alt="medicube" style="height:20px" loading="lazy" decoding="async">
           <span class="small" style="color:var(--ink-3)">데이터 자동화 · 리뷰 분석</span>
         </div>
       </div>
@@ -143,12 +146,12 @@
         <div class="tk-g">
           <p class="k" data-edit="e025">Media &amp; Ads</p>
           <div class="tk-i">
-            <span class="ti"><img src="assets/icons/meta.svg" alt="Meta"></span>
-            <span class="ti"><img src="assets/icons/googleads_color.png" alt="Google Ads"></span>
-            <span class="ti"><img src="assets/icons/naver.svg" alt="네이버"></span>
-            <span class="ti kko"><img src="assets/icons/kakao.svg" alt="카카오"></span>
-            <span class="ti"><img src="assets/icons/tiktok.svg" alt="TikTok"></span>
-            <span class="ti"><img src="assets/icons/ohouse.png" alt="오늘의집"></span>
+            <span class="ti"><img src="assets/icons/meta.svg" alt="Meta" loading="lazy" decoding="async"></span>
+            <span class="ti"><img src="assets/icons/googleads_color.png" alt="Google Ads" loading="lazy" decoding="async"></span>
+            <span class="ti"><img src="assets/icons/naver.svg" alt="네이버" loading="lazy" decoding="async"></span>
+            <span class="ti kko"><img src="assets/icons/kakao.svg" alt="카카오" loading="lazy" decoding="async"></span>
+            <span class="ti"><img src="assets/icons/tiktok.svg" alt="TikTok" loading="lazy" decoding="async"></span>
+            <span class="ti"><img src="assets/icons/ohouse.png" alt="오늘의집" loading="lazy" decoding="async"></span>
             <span class="ti tx" style="color:#F76B15">criteo</span>
           </div>
           <p class="x" data-edit="e026">브랜딩 · 퍼포먼스 상시 운영</p>
@@ -156,30 +159,30 @@
         <div class="tk-g">
           <p class="k" data-edit="e027">Design &amp; Video</p>
           <div class="tk-i">
-            <span class="ti app"><img src="assets/icons/photoshop.png" alt="Photoshop"></span>
-            <span class="ti app"><img src="assets/icons/illustrator.png" alt="Illustrator"></span>
-            <span class="ti"><img src="assets/icons/figma_color.svg" alt="Figma"></span>
-            <span class="ti app"><img src="assets/icons/finalcut.png" alt="Final Cut Pro"></span>
+            <span class="ti app"><img src="assets/icons/photoshop.png" alt="Photoshop" loading="lazy" decoding="async"></span>
+            <span class="ti app"><img src="assets/icons/illustrator.png" alt="Illustrator" loading="lazy" decoding="async"></span>
+            <span class="ti"><img src="assets/icons/figma_color.svg" alt="Figma" loading="lazy" decoding="async"></span>
+            <span class="ti app"><img src="assets/icons/finalcut.png" alt="Final Cut Pro" loading="lazy" decoding="async"></span>
           </div>
           <p class="x" data-edit="e028">소재 제작 · 영상 편집</p>
         </div>
         <div class="tk-g">
           <p class="k" data-edit="e029">Data</p>
           <div class="tk-i">
-            <span class="ti"><img src="assets/icons/googleanalytics.svg" alt="GA4"></span>
-            <span class="ti"><img src="assets/icons/googletagmanager.svg" alt="GTM"></span>
-            <span class="ti"><img src="assets/icons/googlebigquery.svg" alt="BigQuery"></span>
-            <span class="ti"><img src="assets/icons/googlesheets.svg" alt="Sheets"></span>
+            <span class="ti"><img src="assets/icons/googleanalytics.svg" alt="GA4" loading="lazy" decoding="async"></span>
+            <span class="ti"><img src="assets/icons/googletagmanager.svg" alt="GTM" loading="lazy" decoding="async"></span>
+            <span class="ti"><img src="assets/icons/googlebigquery.svg" alt="BigQuery" loading="lazy" decoding="async"></span>
+            <span class="ti"><img src="assets/icons/googlesheets.svg" alt="Sheets" loading="lazy" decoding="async"></span>
           </div>
           <p class="x" data-edit="e030">GA4 · GTM · BigQuery</p>
         </div>
         <div class="tk-g">
           <p class="k" data-edit="e031">Work &amp; AI</p>
           <div class="tk-i">
-            <span class="ti"><img src="assets/icons/notion.svg" alt="Notion"></span>
-            <span class="ti"><img src="assets/icons/claude.svg" alt="Claude"></span>
-            <span class="ti"><img src="assets/icons/openai.svg" alt="Codex"></span>
-            <span class="ti"><img src="assets/icons/visualstudiocode.svg" alt="VS Code"></span>
+            <span class="ti"><img src="assets/icons/notion.svg" alt="Notion" loading="lazy" decoding="async"></span>
+            <span class="ti"><img src="assets/icons/claude.svg" alt="Claude" loading="lazy" decoding="async"></span>
+            <span class="ti"><img src="assets/icons/openai.svg" alt="Codex" loading="lazy" decoding="async"></span>
+            <span class="ti"><img src="assets/icons/visualstudiocode.svg" alt="VS Code" loading="lazy" decoding="async"></span>
           </div>
           <p class="x" data-edit="e032">Notion · Claude · VS Code</p>
         </div>
@@ -201,11 +204,13 @@
         <p class="t" data-edit="e036">Creative</p>
         <p class="d" data-edit="e037">소재를 기획하고 만들고, 성과를 보고 고친 기록</p>
         <ul class="ix-l">
-          <li data-edit="e038"><i>01</i>광고 콘텐츠 영상 — 기획 참여, 디자인팀 협업</li>
-          <li data-edit="e039"><i>02</i>직접 촬영하고 편집한 요리 콘텐츠</li>
-          <li data-edit="e040"><i>03</i>이미지 소재와 카피 기획</li>
-          <li data-edit="e041"><i>04</i>2년간 만든 소재 아카이브 — 3개 브랜드</li>
-          <li data-edit="e042"><i>05</i>성과를 보고 소재를 고치는 루프</li>
+          <li data-edit="e038"><i>01</i>광고 콘텐츠 <em>영상</em> — 기획 참여, 디자인팀 협업</li>
+          <li data-edit="e039"><i>02</i>직접 촬영하고 편집한 <em>요리 콘텐츠</em></li>
+          <li data-edit="e040"><i>03</i>이미지 소재와 <em>카피</em> 기획</li>
+          <li data-edit="e042"><i>04</i>성과를 보고 소재를 고치는 <em>루프</em></li>
+          <!-- 아카이브는 사례가 아니라 참고자료다 — 번호를 매기지 않는다.
+               Operations 가 05 부터 시작하므로 번호가 겹치지도 않는다 -->
+          <li class="ref" data-edit="e041"><i></i>기획 소재 Reference — 3개 브랜드</li>
         </ul>
       </a>
 
@@ -214,9 +219,9 @@
         <p class="t" data-edit="e044">Operations</p>
         <p class="d" data-edit="e045">예산과 판단을 구조로 다룬 세 브랜드</p>
         <ul class="ix-l">
-          <li data-edit="e046"><i>05</i>지누스 — 매달 테스트, 판정은 다음 달로</li>
-          <li data-edit="e047"><i>06</i>샤크닌자 — 카테고리별 공유예산 분배</li>
-          <li data-edit="e048"><i>07</i>디스커버리 — 매체가 아니라 퍼널에 배분</li>
+          <li data-edit="e046"><i>05</i><em>지누스</em> — 매달 테스트, 판정은 다음 달로</li>
+          <li data-edit="e047"><i>06</i><em>샤크닌자</em> — 카테고리별 공유예산 분배</li>
+          <li data-edit="e048"><i>07</i><em>디스커버리</em> — 매체가 아니라 퍼널에 배분</li>
         </ul>
       </a>
 
@@ -225,11 +230,11 @@
         <p class="t" data-edit="e050">Automation</p>
         <p class="d" data-edit="e051">반복 노동을 도구로 대체하고 팀에 넘긴 다섯 갈래</p>
         <ul class="ix-l">
-          <li data-edit="e052"><i>08</i>브랜드별 맞춤 대시보드</li>
-          <li data-edit="e053"><i>09</i>해외 진출용 채널 리뷰 분석</li>
-          <li data-edit="e054"><i>10</i>소재 제작·세팅 자동화</li>
-          <li data-edit="e055"><i>11</i>애드테크 직접 구현</li>
-          <li data-edit="e056"><i>12</i>도구 만드는 법을 팀 절차로</li>
+          <li data-edit="e052"><i>08</i>브랜드별 맞춤 <em>대시보드</em></li>
+          <li data-edit="e053"><i>09</i>해외 진출용 채널 <em>리뷰 분석</em></li>
+          <li data-edit="e054"><i>10</i>소재 제작·세팅 <em>자동화</em></li>
+          <li data-edit="e055"><i>11</i><em>애드테크</em> 직접 구현</li>
+          <li data-edit="e056"><i>12</i>도구 만드는 법을 <em>팀 절차</em>로</li>
         </ul>
       </a>
     </div>
@@ -242,7 +247,7 @@
     <div class="rv">
       <p class="eyebrow" data-edit="e057">Part 01</p>
       <p class="big" data-edit="e058">Creative</p>
-      <p class="kr" data-edit="e059">소재를 기획하고, 만들고, 성과를 보고 개선했습니다.<br>이미지 소재뿐 아니라 영상 소재 기획에도 참여했습니다.<br>그리고,,제 취미는 요리 콘텐츠를 직접 찍고 편집하는 것입니다!<br>(코리아펠라직의 숏폼 기획/제작에 도움이 되는 Fit 한 취미라고 생각합니다.)</p>
+      <p class="kr" data-edit="e059">소재를 기획하고, 만들고, 성과를 보고 개선했습니다.<br>이미지 소재뿐 아니라 영상 소재 기획에도 참여했습니다.<br>그리고,,,제 취미는 요리 콘텐츠를 직접 찍고 편집하는 것입니다!<br>(코리아펠라직의 숏폼 기획/제작에 도움이 되는 Fit 한 취미라고 생각합니다.)</p>
     </div>
     <ul class="part-l rv">
       <li data-edit="e060"><i>01</i>광고 콘텐츠 영상 — 기획 참여, 디자인팀 협업</li>
@@ -356,12 +361,12 @@
       <div class="g2">
         <figure class="figure">
           <img src="assets/img/me_shooting.jpg" alt="카메라로 촬영 중"
-               style="aspect-ratio:1;object-fit:cover">
+               style="aspect-ratio:1;object-fit:cover" loading="lazy" decoding="async">
           <figcaption data-edit="e092">사진 영상 촬영이 취미입니다</figcaption>
         </figure>
         <figure class="figure">
           <img src="assets/img/me_shooting_2.jpg" alt="눈밭에 엎드려 촬영 중"
-               style="aspect-ratio:1;object-fit:cover">
+               style="aspect-ratio:1;object-fit:cover" loading="lazy" decoding="async">
           <figcaption data-edit="e093">앵글이 필요하면 바닥에도 엎드리는 열정</figcaption>
         </figure>
       </div>
@@ -369,7 +374,7 @@
       <div class="split-r">
         <p class="label" data-edit="e094">왜 이걸 넣었나</p>
         <p class="h3 mt6" data-edit="e095">가시제거연구소의 숏폼과<br>Fit 한 저의 취미</p>
-        <p class="lead" style="font-size:16px;margin-top:var(--s4)" data-edit="e096">
+        <p class="lead" style="font-size:15px;margin-top:var(--s4)" data-edit="e096">
           메타 광고 라이브러리에서 가시제거연구소를 찾아보면 조리 장면 영상이 주력입니다.
           굽고, 튀기고, 접시에 담는 컷이 반복됩니다.
           저는 그 포맷을 취미로 경험해 봤습니다.</p>
@@ -440,10 +445,12 @@
         가전은 스펙과 불편 해소, 홈퍼니싱은 할인율과 라이브 일정, 패션은 제품 이름과 룩 등, 캠페인의 목적까지 고려하며 기획하고 직접 운영하며 성과가 좋은 소재의 특징을 분석했습니다.</p>
     </div>
 
-    <div class="arch">
+    <!-- 이 벽은 화면 폭을 다 쓴다. 브랜드당 10종 × 3 이 이 포트폴리오에서 가장 강한 증거인데
+         1440 컨테이너 안에 갇혀 있으면 '많다'가 전달되지 않는다 -->
+    <div class="arch bleed">
       <div class="arch-row rv">
         <div class="arch-head">
-          <div class="lg"><img src="assets/img/logo_sharkninja.png" alt="SharkNinja"></div>
+          <div class="lg"><img src="assets/img/logo_sharkninja.png" alt="SharkNinja" loading="lazy" decoding="async"></div>
           <p class="cat label" data-edit="e118">가전 · 청소기 · 주방가전</p>
           <p class="n" data-edit="e119">샤크닌자</p>
           <p class="d" data-edit="e120">제품의 USP를 한 줄로 줄이고 시각적으로 보여줄 수 있는 효과를 이용했습니다. “엉킴 걱정 NO”처럼 리뷰에서 반복되는 불만을 그대로 카피로 쓰기도 했습니다.</p>
@@ -464,7 +471,7 @@
 
       <div class="arch-row rv">
         <div class="arch-head">
-          <div class="lg"><img src="assets/img/logo_zinus.png" alt="ZINUS"></div>
+          <div class="lg"><img src="assets/img/logo_zinus.png" alt="ZINUS" loading="lazy" decoding="async"></div>
           <p class="cat label" data-edit="e121">홈퍼니싱 · 매트리스</p>
           <p class="n" data-edit="e122">지누스</p>
           <p class="d" data-edit="e123">매주 다양한 프로모션이 진행됩니다. 할인율과 기간, 라이브 시간이 소재의 주인공이라 소비자가 받을 수 있는 혜택 중심의 소재를 제작하였습니다.</p>
@@ -485,7 +492,7 @@
 
       <div class="arch-row rv">
         <div class="arch-head">
-          <div class="lg"><img src="assets/img/logo_discovery.png" alt="Discovery Expedition"></div>
+          <div class="lg"><img src="assets/img/logo_discovery.png" alt="Discovery Expedition" loading="lazy" decoding="async"></div>
           <p class="cat label" data-edit="e124">패션 · 신발 · 의류</p>
           <p class="n" data-edit="e125">디스커버리</p>
           <p class="d" data-edit="e126">패션은 할인율보다 제품 이름과 착용 컷이 먼저였습니다.
@@ -537,20 +544,20 @@
         </div>
 
         <div class="g4 mt7">
-          <div class="card card--flat" style="padding:var(--s5)">
-            <p class="label" data-edit="e144">소재</p><p class="h3 mt6" data-edit="e145">5<span style="font-size:.6em">건</span></p>
+          <div class="card card--tick">
+            <span class="tick-ic" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h14v10H3z"/><circle cx="7.2" cy="8.6" r="1.5"/><path d="M3 13l4-3.4 3.4 2.8L14 8.6l3 2.8"/></svg></span><p class="label" data-edit="e144">소재</p><p class="h3 mt6" data-edit="e145">5<span style="font-size:.6em">건</span></p>
             <p class="cap" style="margin-top:var(--s2)" data-edit="e146">썸네일 · 리뷰 기반 유형 · 사이즈 · DA 카피</p>
           </div>
-          <div class="card card--flat" style="padding:var(--s5)">
-            <p class="label" data-edit="e147">타겟</p><p class="h3 mt6" data-edit="e148">3<span style="font-size:.6em">건</span></p>
+          <div class="card card--tick">
+            <span class="tick-ic" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6.4"/><circle cx="10" cy="10" r="2.6"/><path d="M10 1.4v2.6M10 16v2.6M1.4 10h2.6M16 10h2.6"/></svg></span><p class="label" data-edit="e147">타겟</p><p class="h3 mt6" data-edit="e148">3<span style="font-size:.6em">건</span></p>
             <p class="cap" style="margin-top:var(--s2)" data-edit="e149">자동확장 · 신규 페르소나 · 이탈 리타겟</p>
           </div>
-          <div class="card card--flat" style="padding:var(--s5)">
-            <p class="label" data-edit="e150">입찰 · 지면</p><p class="h3 mt6" data-edit="e151">3<span style="font-size:.6em">건</span></p>
+          <div class="card card--tick">
+            <span class="tick-ic" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16h14"/><path d="M5 16V9.5M9.4 16V5M13.8 16v-4.4"/><circle cx="9.4" cy="5" r="1.5"/></svg></span><p class="label" data-edit="e150">입찰 · 지면</p><p class="h3 mt6" data-edit="e151">3<span style="font-size:.6em">건</span></p>
             <p class="cap" style="margin-top:var(--s2)" data-edit="e152">노출 제품 비교 · 최적화 입찰 · 지면 분리</p>
           </div>
-          <div class="card card--flat" style="padding:var(--s5)">
-            <p class="label" data-edit="e153">신규 매체</p><p class="h3 mt6" data-edit="e154">2<span style="font-size:.6em">건</span></p>
+          <div class="card card--tick">
+            <span class="tick-ic" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.6" cy="6" r="2.2"/><circle cx="14.4" cy="6" r="2.2"/><circle cx="10" cy="14.4" r="2.2"/><path d="M7.4 7.3l1.9 5M12.6 7.3l-1.9 5M7.8 6h4.4"/></svg></span><p class="label" data-edit="e153">신규 매체</p><p class="h3 mt6" data-edit="e154">2<span style="font-size:.6em">건</span></p>
             <p class="cap" style="margin-top:var(--s2)" data-edit="e155">SA 카니발 대응 · 크리테오 키워드 유형</p>
           </div>
         </div>
@@ -622,32 +629,32 @@
     </div>
     <div class="bsum">
       <div class="bs rv">
-        <div class="lg"><img src="assets/img/logo_zinus.png" alt="ZINUS"></div>
+        <div class="lg"><img src="assets/img/logo_zinus.png" alt="ZINUS" loading="lazy" decoding="async"></div>
         <p class="cat label" data-edit="e172">홈퍼니싱</p>
         <div class="rows">
           <div class="r"><span>운영 기간</span><b>2026.01 – 현재</b></div>
           <div class="r"><span>운영 규모</span><b>월 2억+</b></div>
-          <div class="r"><span>역할 · 기여도</span><b>운영 주담당 · 80%</b></div>
+          <div class="r"><span>역할 · 기여도</span><b>운영 주담당 · <b class="pc">80%</b></b></div>
         </div>
         <p class="hi" data-edit="e173">테스트 판정을 다음 달 운영안으로 이월<em>프로모션 3~5건 동시 대응</em></p>
       </div>
       <div class="bs rv">
-        <div class="lg"><img src="assets/img/logo_sharkninja.png" alt="SharkNinja"></div>
+        <div class="lg"><img src="assets/img/logo_sharkninja.png" alt="SharkNinja" loading="lazy" decoding="async"></div>
         <p class="cat label" data-edit="e174">가전</p>
         <div class="rows">
           <div class="r"><span>운영 기간</span><b>2025.11 – 2026.03</b></div>
           <div class="r"><span>운영 규모</span><b>월 1억</b></div>
-          <div class="r"><span>역할 · 기여도</span><b>프로세스 설계 · 50%</b></div>
+          <div class="r"><span>역할 · 기여도</span><b>프로세스 설계 · <b class="pc">50%</b></b></div>
         </div>
         <p class="hi" data-edit="e175">공유예산을 카테고리 효율로 배분<em>검색광고 ROAS 253% 향상</em></p>
       </div>
       <div class="bs rv">
-        <div class="lg"><img src="assets/img/logo_discovery.png" alt="Discovery Expedition"></div>
+        <div class="lg"><img src="assets/img/logo_discovery.png" alt="Discovery Expedition" loading="lazy" decoding="async"></div>
         <p class="cat label" data-edit="e176">패션</p>
         <div class="rows">
           <div class="r"><span>운영 기간</span><b>2024.09 – 2025.09</b></div>
           <div class="r"><span>운영 규모</span><b>월 6억+</b></div>
-          <div class="r"><span>역할 · 기여도</span><b>미디어믹스 11건 · 40%</b></div>
+          <div class="r"><span>역할 · 기여도</span><b>미디어믹스 11건 · <b class="pc">40%</b></b></div>
         </div>
         <p class="hi" data-edit="e177">예산을 PLC에 따라 퍼널에 배분<em>광고비 −39% · 매출 −10%</em></p>
       </div>
@@ -669,7 +676,7 @@
       </p>
       <div class="taglist mt6">
         <span class="tag" data-edit="e181">2026.01 – 현재</span><span class="tag tag--ink" data-edit="e182">월 2억+</span>
-        <span class="tag tag--ink" data-edit="e183">운영 주담당 · 기여도 80%</span>
+        <span class="tag tag--ink" data-edit="e183">운영 주담당 · 기여도 <b class="pc">80%</b></span>
       </div>
     </div>
 
@@ -687,6 +694,26 @@
             <p class="d" data-edit="e196">TO-BE 가 그대로 다음 장의 출발점이 됩니다</p></div>
         </div>
         <p class="note" data-edit="e197">성과향상이 없는 테스트는 개선 과제로 남깁니다. 같은 실패를 두 번 하지 않기 위해서입니다.</p>
+        <!-- 관리표가 다음 달로 넘어가는 구조. 글로 또 나열하지 않고 표 두 장으로 보여준다 —
+             이번 달 TO-BE 칸이 다음 달 AS-WAS 칸으로 그대로 옮겨 앉는다 -->
+        <div class="carry rv" role="img"
+             aria-label="이번 달 관리표의 TO-BE 열이 다음 달 관리표의 AS-WAS 열로 그대로 넘어간다">
+          <div class="sheet">
+            <p class="mo">이번 달</p>
+            <div class="cols">
+              <span>AS-WAS</span><span>AS-IS</span><span class="on">TO-BE</span>
+            </div>
+            <div class="cells"><i></i><i></i><i class="on"></i></div>
+          </div>
+          <div class="hop"><span>이월</span></div>
+          <div class="sheet">
+            <p class="mo">다음 달</p>
+            <div class="cols">
+              <span class="on">AS-WAS</span><span>AS-IS</span><span>TO-BE</span>
+            </div>
+            <div class="cells"><i class="on"></i><i></i><i></i></div>
+          </div>
+        </div>
       </div>
 
       <div class="split-r rv">
@@ -697,7 +724,7 @@
           <li data-edit="e201"><span>운영 규모</span><b>월 2억+</b></li>
           <li data-edit="e202"><span>동시 진행 프로모션</span><b>3 – 5건</b></li>
           <li data-edit="e203"><span>관리표</span><b>3열 · 월 1회 이월</b></li>
-          <li data-edit="e204"><span>역할 · 기여도</span><b>운영 주담당 · 80%</b></li>
+          <li data-edit="e204"><span>역할 · 기여도</span><b>운영 주담당 · <b class="pc">80%</b></b></li>
         </ul>
         <p class="note" data-edit="e205">여기서 나온 테스트 판정과 수치는 Creative 파트의
           <a href="#cr-loop" style="color:var(--brand-ink);font-weight:700;text-decoration:underline">
@@ -718,7 +745,7 @@
       </p>
       <div class="taglist mt6">
         <span class="tag" data-edit="e209">2025.11 – 2026.03</span><span class="tag tag--ink" data-edit="e210">월 1억</span>
-        <span class="tag tag--ink" data-edit="e211">네이버 검색광고 중심 · 기여도 50%</span>
+        <span class="tag tag--ink" data-edit="e211">네이버 검색광고 중심 · 기여도 <b class="pc">50%</b></span>
       </div>
     </div>
 
@@ -769,7 +796,7 @@
       <p class="lead" data-edit="e232">패션 제품의 특징인 시즌성에 따라 인지·관심·고려·전환 목적에 따라 제품의 Life Cycle을 고려하여 예산을 배분하고, 단계마다 판단 지표를 분리해 미디어믹스에 적용했습니다. 또한 광고 예산의 감소에 따라 매출 방어를 위한 미디어믹스 방향성을 고려하였습니다.</p>
       <div class="taglist mt6">
         <span class="tag" data-edit="e233">2024.09 – 2025.09</span><span class="tag tag--ink" data-edit="e234">월 6억+</span>
-        <span class="tag tag--ink" data-edit="e235">미디어믹스 11건 · 기여도 40%</span>
+        <span class="tag tag--ink" data-edit="e235">미디어믹스 11건 · 기여도 <b class="pc">40%</b></span>
       </div>
     </div>
 
@@ -788,10 +815,12 @@
         </div>
         <p class="note" data-edit="e249">상단 캠페인을 하단 퍼널에 반영될 수 있도록 연계 타겟을 이용하고, 브랜딩 효과를 정량적으로 평가하기 위한 기준을 세웁니다.</p>
 
+        <!-- 막대 길이는 39 : 10 실제 비율. 눈금이 아니라 값 그 자체다 -->
         <div class="asym mt7">
-          <div class="bx a"><p class="k" data-edit="e250">줄인 광고비</p><p class="v" data-edit="e251">−39%</p></div>
-          <div class="gt">≫</div>
-          <div class="bx b"><p class="k" data-edit="e252">빠진 매출</p><p class="v" data-edit="e253">−10%</p></div>
+          <div class="row a"><p class="k" data-edit="e250">줄인 광고비</p>
+            <div class="tr"><i style="--w:100%"></i></div><p class="v" data-edit="e251">−39%</p></div>
+          <div class="row b"><p class="k" data-edit="e252">빠진 매출</p>
+            <div class="tr"><i style="--w:25.6%"></i></div><p class="v" data-edit="e253">−10%</p></div>
         </div>
         <p class="note" data-edit="e254">광고비를 줄인 만큼 매출이 빠지지 않았습니다. 잘라낸 구간이 비효율 구간이었다는 뜻입니다.</p>
       </div>
@@ -804,20 +833,23 @@
 
         <div class="gb">
           <div class="gb-lg"><span class="a"><i></i>광고비</span><span class="b"><i></i>매출</span></div>
-          <svg viewBox="0 0 340 160" width="100%" style="display:block" role="img"
-               aria-label="재편 전을 100으로 둔 지수 — 광고비 100에서 61로, 매출 100에서 90으로">
+          <svg class="slope" viewBox="0 0 340 160" width="100%" style="display:block" role="img"
+               aria-label="재편 전을 100으로 둔 지수 — 광고비 100에서 61로, 매출 100에서 90으로. 두 선 사이 격차가 절감 효과">
+            <!-- 격차 자체가 요지다. 선 두 개만 그으면 '거의 평행한 두 줄'로 보이고,
+                 사이를 채우면 오른쪽으로 벌어지는 쐐기가 곧 '아낀 만큼'이 된다 -->
+            <polygon class="wedge" points="36,26 248,39 248,98" fill="#FF8F1C" opacity=".2"/>
             <line x1="36" y1="14" x2="36" y2="140" stroke="#E4E4E4" stroke-width="1"/>
             <line x1="248" y1="14" x2="248" y2="140" stroke="#E4E4E4" stroke-width="1"/>
-            <line x1="36" y1="26" x2="248" y2="98" stroke="#D4D6D9" stroke-width="2.5"/>
-            <line x1="36" y1="26" x2="248" y2="39" stroke="#FF8F1C" stroke-width="2.5"/>
-            <circle cx="36" cy="26" r="4.5" fill="#B85A05"/>
-            <circle cx="248" cy="39" r="4.5" fill="#B85A05"/>
-            <circle cx="248" cy="98" r="4.5" fill="#9DA1A6"/>
-            <text x="26" y="21" font-size="12" font-weight="700" fill="#191919" text-anchor="end">100</text>
-            <text x="258" y="36" font-size="13" font-weight="800" fill="#B85A05">90</text>
-            <text x="258" y="95" font-size="13" font-weight="800" fill="#767676">61</text>
-            <text x="258" y="53" font-size="11" fill="#767676">−10%</text>
-            <text x="258" y="112" font-size="11" fill="#767676">−39%</text>
+            <line class="ln" x1="36" y1="26" x2="248" y2="98" stroke="#B9BDC2" stroke-width="3" stroke-linecap="round"/>
+            <line class="ln" x1="36" y1="26" x2="248" y2="39" stroke="#FF8F1C" stroke-width="3" stroke-linecap="round"/>
+            <circle class="pt" cx="36" cy="26" r="5" fill="#B85A05"/>
+            <circle class="pt" cx="248" cy="39" r="5" fill="#B85A05"/>
+            <circle class="pt" cx="248" cy="98" r="5" fill="#8B9096"/>
+            <text class="lb" x="26" y="21" font-size="12" font-weight="700" fill="#191919" text-anchor="end">100</text>
+            <text class="lb" x="258" y="36" font-size="14" font-weight="800" fill="#B85A05">90</text>
+            <text class="lb" x="258" y="95" font-size="14" font-weight="800" fill="#5F646A">61</text>
+            <text class="lb" x="258" y="53" font-size="11" fill="#767676">−10%</text>
+            <text class="lb" x="258" y="112" font-size="11" fill="#767676">−39%</text>
           </svg>
           <div class="slp-x" style="display:flex;justify-content:space-between;font-size:12.5px;
                color:var(--ink-3);padding-inline:4px"><span>재편 전</span><span>재편 후</span></div>
@@ -858,13 +890,13 @@
         아마존·자사몰·검색이 각각 다른 기준으로 집계돼 채널별 성과를 하나의 리포트로 만들기가 복잡했습니다. 채널별 데이터를 기준에 따라 정리하고 BigQuery에 테이블을 정리하였고, 한눈에 성과를 보기 쉽게 통합 대시보드를 구축하였습니다.</p>
       <div class="taglist mt6">
         <span class="tag" data-edit="e270">BigQuery 실시간 연동</span>
-        <span class="tag tag--ink" data-edit="e271">기획·설계·구축 기여도 100% · 데이터 연동은 솔루션팀 협업</span>
+        <span class="tag tag--ink" data-edit="e271">기획·설계·구축 기여도 <b class="pc">100%</b> · 데이터 연동은 솔루션팀 협업</span>
       </div>
     </div>
 
     <div class="split">
       <div class="rv">
-        <figure class="shot"><img src="assets/img/tool_dashboard.png" alt="지누스 Media Dashboard"></figure>
+        <figure class="shot"><img src="assets/img/tool_dashboard.png" alt="지누스 Media Dashboard" loading="lazy" decoding="async"></figure>
         <p class="shot-c" data-edit="e272">직접 만든 대시보드 실제 화면 · 금액·단가·ROAS와 계정 ID는 마스킹</p>
       </div>
       <div class="split-r rv">
@@ -896,7 +928,7 @@
         소구점 후보까지 자동으로 나오게 한 절차로 묶었습니다.
       </p>
       <div class="taglist mt6">
-        <span class="tag" data-edit="e283">국내 5종 · 해외 2종 채널</span><span class="tag tag--ink" data-edit="e284">기여도 100%</span>
+        <span class="tag" data-edit="e283">국내 5종 · 해외 2종 채널</span><span class="tag tag--ink" data-edit="e284">기여도 <b class="pc">100%</b></span>
       </div>
     </div>
 
@@ -908,7 +940,7 @@
           <div class="sx"><p class="n" data-edit="e291">03</p><p class="t" data-edit="e292">엑셀 정리</p><p class="d" data-edit="e293">별점 · 작성일 · 옵션 · 본문</p></div>
           <div class="sx on"><p class="n" data-edit="e294">04</p><p class="t" data-edit="e295">LLM 분석</p><p class="d" data-edit="e296">요약 · 감성 · 키워드 → 소구점 후보</p></div>
         </div>
-        <figure class="shot mt6"><img src="assets/img/tool_review_agent.png" alt="Review Crawling Agent"></figure>
+        <figure class="shot mt6"><img src="assets/img/tool_review_agent.png" alt="Review Crawling Agent" loading="lazy" decoding="async"></figure>
         <p class="shot-c" data-edit="e297">직접 만든 Review Crawling Agent 실제 화면 · 큐텐 재팬 메디큐브 리뷰 수집 결과</p>
       </div>
       <div class="split-r rv">
@@ -936,7 +968,7 @@
         디자인은 단순한데 수량이 많은 소재를 규격별로 다시 만들고 하나씩 올리느라 한 번 세팅하면 2시간이 들었습니다. 규격 변환, 문구 입력, 매체 세팅을
         한 플로우로 끝내는 에디터를 설계하고 구축하였습니다.</p>
       <div class="taglist mt6">
-        <span class="tag" data-edit="e308">스마트채널 · 비즈보드</span><span class="tag tag--ink" data-edit="e309">750×160 / 750×280 · 기여도 100%</span>
+        <span class="tag" data-edit="e308">스마트채널 · 비즈보드</span><span class="tag tag--ink" data-edit="e309">750×160 / 750×280 · 기여도 <b class="pc">100%</b></span>
       </div>
     </div>
 
@@ -975,7 +1007,7 @@
         양쪽으로 구현하였으며 전환 이벤트까지 직접 정의했습니다.
       </p>
       <div class="taglist mt6">
-        <span class="tag" data-edit="e331">2026.07 – 현재</span><span class="tag tag--ink" data-edit="e332">OAuth 연동 매체 6종 · 기여도 100%</span>
+        <span class="tag" data-edit="e331">2026.07 – 현재</span><span class="tag tag--ink" data-edit="e332">OAuth 연동 매체 6종 · 기여도 <b class="pc">100%</b></span>
       </div>
     </div>
 
@@ -1013,7 +1045,7 @@
         도구는 만든 사람만 쓰면 개인 역량으로 끝나고, 다음 사람이 같은 시간을 또 씁니다.
         도구가 아니라 만드는 4단계 방법을 전사차원에서 브리핑 하였고 각 팀이 상황에 맞게 스스로 만들 수 있게 방법을 공유했습니다.</p>
       <div class="taglist mt6">
-        <span class="tag" data-edit="e354">2026.06 AI 활용 사례 발표</span><span class="tag tag--ink" data-edit="e355">전사 확산 · 기여도 100%</span>
+        <span class="tag" data-edit="e354">2026.06 AI 활용 사례 발표</span><span class="tag tag--ink" data-edit="e355">전사 확산 · 기여도 <b class="pc">100%</b></span>
       </div>
     </div>
 
@@ -1026,10 +1058,10 @@
           <div class="sx on"><p class="n" data-edit="e365">STEP 04</p><p class="t" data-edit="e366">디벨롭 · 공유</p><p class="d" data-edit="e367">다듬고 패키징해 팀원에게 공유합니다</p></div>
         </div>
         <div class="swall">
-          <img src="assets/deck/ai_case_01.jpg" alt=""><img src="assets/deck/ai_case_02.jpg" alt="">
-          <img src="assets/deck/ai_case_03.jpg" alt=""><img src="assets/deck/ai_case_04.jpg" alt="">
-          <img src="assets/deck/ai_case_05.jpg" alt=""><img src="assets/deck/ai_case_06.jpg" alt="">
-          <img src="assets/deck/ai_case_07.jpg" alt=""><img src="assets/deck/ai_case_08.jpg" alt="">
+          <img src="assets/deck/ai_case_01.jpg" alt="" loading="lazy" decoding="async"><img src="assets/deck/ai_case_02.jpg" alt="" loading="lazy" decoding="async">
+          <img src="assets/deck/ai_case_03.jpg" alt="" loading="lazy" decoding="async"><img src="assets/deck/ai_case_04.jpg" alt="" loading="lazy" decoding="async">
+          <img src="assets/deck/ai_case_05.jpg" alt="" loading="lazy" decoding="async"><img src="assets/deck/ai_case_06.jpg" alt="" loading="lazy" decoding="async">
+          <img src="assets/deck/ai_case_07.jpg" alt="" loading="lazy" decoding="async"><img src="assets/deck/ai_case_08.jpg" alt="" loading="lazy" decoding="async">
         </div>
         <p class="shot-c" data-edit="e368">직접 만든 발표자료 · 문제 정의 → 만드는 방법 → 사례 3종 → 변화 → 팀 자산화 (전체 13장 중 8장)</p>
       </div>
@@ -1040,7 +1072,7 @@
           <p class="d" data-edit="e371">반복 업무 시간 절감 · 도구 3종 실무 적용 후 측정<br>2026.06 사내 발표 자료 기재값</p>
         </div>
         <figure class="figure" style="margin-top:var(--s6)">
-          <img src="assets/img/ref_team_briefing.jpg" alt="2026.06 사내 AI 활용 사례 발표">
+          <img src="assets/img/ref_team_briefing.jpg" alt="2026.06 사내 AI 활용 사례 발표" loading="lazy" decoding="async">
           <figcaption data-edit="e372">2026.06 사내 지식 공유 · AI 활용 사례 발표</figcaption>
         </figure>
         <p class="note" data-edit="e373">되찾은 시간은 아웃바운드, 인사이트와 전략, 광고주 응대 품질에 신경쓸 수 있었습니다.</p>
@@ -1050,11 +1082,26 @@
 </section>
 
 <!-- ══════════════ 가시제거연구소 분석 ══════════════ -->
-<section class="sec sec--panel" id="fit">
+<section class="sec sec--dark" id="fit">
   <div class="wrap">
-    <div class="sec-head rv" style="max-width:900px">
+    <!-- 소재가 먼저 깔리고, 스크롤을 내리면 물러나면서 분석이 들어온다.
+         지원하지 않는 브라우저에서는 그냥 소재 격자로 남는다 — 읽는 데 지장이 없다 -->
+    <div class="adintro" aria-hidden="true">
+      <p class="adintro-cap">메타 광고 라이브러리 · 활성 광고 31건</p>
+      <img src="assets/adlib/thumbs/ad01.jpg" alt="" loading="lazy" decoding="async">
+      <img src="assets/adlib/thumbs/ad02.jpg" alt="" loading="lazy" decoding="async">
+      <img src="assets/adlib/thumbs/ad03.jpg" alt="" loading="lazy" decoding="async">
+      <img src="assets/adlib/thumbs/ad04.jpg" alt="" loading="lazy" decoding="async">
+      <img src="assets/adlib/thumbs/ad05.jpg" alt="" loading="lazy" decoding="async">
+      <img src="assets/adlib/thumbs/ad06.jpg" alt="" loading="lazy" decoding="async">
+      <img src="assets/adlib/thumbs/ad07.jpg" alt="" loading="lazy" decoding="async">
+      <img src="assets/adlib/thumbs/ad08.jpg" alt="" loading="lazy" decoding="async">
+      <img src="assets/adlib/thumbs/ad09.jpg" alt="" loading="lazy" decoding="async">
+      <img src="assets/adlib/thumbs/ad10.jpg" alt="" loading="lazy" decoding="async">
+    </div>
+    <div class="sec-head">
       <p class="eyebrow" data-edit="e374">지원 회사 분석</p>
-      <h2 style="margin-top:var(--s4)" data-edit="e375">가시제거연구소 광고를<br>직접 뜯어봤습니다.</h2>
+      <h2 style="margin-top:var(--s4)" data-edit="e375">가시제거연구소 광고를<br>직접 <em>뜯어봤습니다</em>.</h2>
       <p class="lead" data-edit="e376">
         메타 광고 라이브러리에서 가시제거연구소를 검색해 <b>활성 광고 31건</b>을 하나씩 읽었습니다.<br>아래는 제가 본 코리아펠라직의 분석과, 제가 입사한다면 먼저 해보고 싶은 것입니다.
       </p>
@@ -1066,7 +1113,7 @@
       <div class="card card--asym">
         <p class="label" data-edit="e378">메타 활성 광고</p>
         <p class="h2" style="margin-top:var(--s3)" data-edit="e379"><span class="acc"><span data-count="31">31</span>건</span></p>
-        <p class="cap" style="margin-top:var(--s3)" data-edit="e380">2026.02 · 05 · 07 · 08 에 배치로 올라온 흔적</p>
+        <p class="cap" style="margin-top:var(--s3)" data-edit="e380">2026.02 · 03 · 04 · 05 · 07 · 08 에 배치로 올라온 흔적</p>
       </div>
       <div class="card">
         <p class="label" data-edit="e381">주력 포맷</p>
@@ -1084,25 +1131,25 @@
       <div class="o rv">
         <span class="n" data-edit="e434">1</span>
         <p class="t" data-edit="e387">후킹은 소셜 프루프가 가장 많습니다</p>
-        <p class="d" data-edit="e388">제품 설명이 아니라 “남들이 이미 쓴다”로 첫 줄을 엽니다. 지금 가장 많이 쓰는 축입니다.</p>
-        <p class="ex" data-edit="e389">“맘카페에서 공유하는 그 제품”<br>“고등어 좋아하는 사람들끼리는 이미 다 먹고 있는 그 제품”<br>“우리 집 쟁여템 1순위”</p>
+        <p class="d" data-edit="e388">제품 설명이 아니라 “<b>남들이 이미 쓴다</b>”로 첫 줄을 엽니다. 지금 가장 많이 쓰는 축입니다.</p>
+        <p class="ex" data-edit="e389">“<em>맘카페에서 공유하는</em> 그 제품”<br>“고등어 좋아하는 사람들끼리는 <em>이미 다 먹고 있는</em> 그 제품”<br>“우리 집 <em>쟁여템 1순위</em>”</p>
       </div>
       <div class="o rv">
         <span class="n" data-edit="e435">2</span>
-        <p class="t" data-edit="e390">본문은 체크리스트 형태로 고정돼 있습니다</p>
-        <p class="d" data-edit="e391">✔ 네 줄이 거의 그대로 반복됩니다. 안정적이지만 소재끼리 구분이 잘 안 됩니다.</p>
-        <p class="ex" data-edit="e392">✔ 회원가입 시 첫 구매 8% 할인<br>✔ 잔가시 <b>99.9%</b> 제거<br>✔ 에어프라이어 180도 20분 조리<br>✔ 세척·해동 필요 없음</p>
+        <p class="t" data-edit="e390">최근 본문은 같은 두 마디로 수렴합니다</p>
+        <p class="d" data-edit="e391">훅 한 줄 뒤에 단문 두세 줄이 붙습니다. 그 안에서 <b>순살이라 편함</b>과 <b>국산이라 안심</b> 두 마디가 거의 모든 본문에 반복됩니다. 초기의 네 줄 체크리스트는 짧아져 스펙 두세 개만 남았습니다.</p>
+        <p class="ex" data-edit="e392">“국산 고등어라 안심 · 순살이라 편함”<br>“순살이라 간편, 국산이라서 안심”<br>“순살이라 편하고 국산이라 안심”<br>✔ <b>99.9%</b> 가시 제거 &nbsp;·&nbsp; ✔ 냉동 그대로 조리</p>
       </div>
       <div class="o rv">
         <span class="n" data-edit="e436">3</span>
         <p class="t" data-edit="e393">이미 레시피형 소재를 쓰고 있습니다</p>
-        <p class="d" data-edit="e394">제품이 아니라 요리법을 보여주는 소재가 명란 라인에서 돌고 있습니다. 고등어·생선까스로 넓힐 여지가 보입니다.</p>
-        <p class="ex" data-edit="e395">“이제 콩나물무침, 이렇게 드셔보세요”<br>“명란무침 하나면 파스타도 달라집니다”</p>
+        <p class="d" data-edit="e394">제품이 아니라 요리법을 보여주는 소재가 <b>명란 라인</b>에서 돌고 있습니다. 고등어·생선까스로 넓힐 여지가 보입니다.</p>
+        <p class="ex" data-edit="e395">“이제 콩나물무침, <em>이렇게 드셔보세요</em>”<br>“명란무침 하나면 <em>파스타도 달라집니다</em>”</p>
       </div>
       <div class="o rv">
         <span class="n" data-edit="e437">4</span>
         <p class="t" data-edit="e396">목적별로 CTA도 변화해야 합니다</p>
-        <p class="d" data-edit="e397">캠페인 구조를 분석하고, 목적별 CTA를 찾아가겠습니다.<br>바로 정리하고 A/B로 확인할 수 있는 항목입니다.</p>
+        <p class="d" data-edit="e397">캠페인 구조를 분석하고, <b>목적별 CTA</b>를 찾아가겠습니다.<br>바로 정리하고 A/B로 확인할 수 있는 항목입니다.</p>
         <p class="ex" data-edit="e398">지금 구매하기 · 더 알아보기 · <b>Shop Now</b> · <b>Learn More</b></p>
       </div>
     </div>
