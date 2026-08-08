@@ -30,7 +30,11 @@
   onScroll();
 
   /* ── 진입 페이드업 · 막대 성장 · 카운트업 ── */
-  var revealTargets = document.querySelectorAll('.rv, .tl-bar, [data-count]');
+  /* 막대(.tl-bar) 가 아니라 트랙(.tl-track) 을 관찰한다.
+     막대는 시작 상태가 '완전히 잘린' 상태라 면적이 0 이고, 면적 0 인 요소는
+     threshold 0.12 를 영원히 넘지 못한다 — 관찰자가 발동하지 않아 막대가 계속 숨어 있었다.
+     트랙은 실제 크기를 가지므로 안전하다 */
+  var revealTargets = document.querySelectorAll('.rv, .tl-track, [data-count]');
 
   if (!('IntersectionObserver' in window) || reduced) {
     /* 모션을 안 쓰는 경로에서도 숫자는 최종값으로 채워야 한다 */

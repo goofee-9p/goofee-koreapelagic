@@ -95,25 +95,6 @@ html,body{overflow-x:clip}
 .sec--dark .eyebrow{color:var(--brand)}
 .sec--dark .eyebrow::before{background:var(--brand)}
 
-/* 히어로 아이브로우 — 대시 대신 고등어. 첫 화면에서 브랜드 결을 한 번 스치고 지나간다.
-   11px 라벨이라 크지 않다. 제목보다 앞서면 안 된다 */
-.hero .eyebrow{
-  position:relative;margin-left:13px;
-  padding:7px 25px 7px 15px;border-radius:var(--r-pill);
-  background:var(--brand);color:var(--ink);
-  letter-spacing:.2em;gap:0;
-}
-.hero .eyebrow::before{
-  width:13px;height:19px;margin-top:-9.5px;border-radius:0;
-  position:absolute;left:-11px;top:50%;
-  background:inherit;
-  clip-path:polygon(0 0,100% 50%,0 100%,42% 50%);
-}
-.hero .eyebrow::after{
-  content:'';position:absolute;right:11px;top:50%;
-  width:4px;height:4px;margin-top:-2px;border-radius:50%;
-  background:var(--ink);opacity:.5;
-}
 
 /* ═══════════════════════════════════════════════════════════
    4 · 타이포
@@ -183,33 +164,44 @@ h3,.h3{font-size:clamp(20px,1.8vw,28px);font-weight:700;line-height:1.3;letter-s
 /* ═══════════════════════════════════════════════════════════
    5-A · 고등어 — 브랜드 모티프
    ═══════════════════════════════════════════════════════════ */
-/* 가시제거연구소는 고등어 브랜드다. 알약 한쪽에 꼬리를 붙이고 눈을 찍으면
-   글자가 들어가는 라벨이면서 물고기로 읽힌다.
-   실루엣을 정교하게 그리면 안쪽에 글자가 들어갈 자리가 없다 — 알약이 몸통이어야 한다.
+/* 가시제거연구소는 고등어 브랜드다. 상단바 PDF 버튼 하나에만 쓴다 —
+   여러 곳에 붙이면 브랜드 인사가 아니라 장식이 된다.
 
-   꼬리는 clip-path 로 그린다. 투명 테두리로 삼각형을 만드는 옛 수법은
-   '두꺼운 한쪽 테두리' 로 남아 다른 규칙과 헷갈린다.
-   꼬리 색은 background:inherit — 버튼이 상태에 따라 색을 바꿔도 꼬리가 따라간다 */
-.fish{position:relative;margin-left:13px}
-.fish::before{
-  content:'';position:absolute;left:-11px;top:50%;
-  width:13px;height:19px;margin-top:-9.5px;
-  background:inherit;
-  clip-path:polygon(0 0,100% 50%,0 100%,42% 50%);
+   알약에 꼬리만 붙였더니 머리 쪽이 그냥 둥근 끝이라 고등어로 안 읽혔다.
+   그래서 몸통·꼬리·주둥이를 clip-path 하나로 그린다 — 꼬리는 갈라지고 주둥이는 뾰족하다.
+   % 좌표라 글자 길이가 바뀌어도 비율이 유지된다.
+   글자는 꼬리(0–14%)와 주둥이(90–100%) 를 피해 가운데에만 오도록 좌우 여백을 준다 */
+.btn.fish{
+  padding-left:34px;padding-right:32px;
+  border-radius:0;
+  /* 방추형 — 꼬리자루(17%)에서 잘록해졌다가 배(50%)에서 가장 넓고 주둥이로 좁아진다.
+     육각형으로 잡았더니 화살표 배너처럼 보였다. 점을 늘려 곡선을 흉내낸다 */
+  clip-path:polygon(
+    0% 13%,     /* 꼬리 위 끝 */
+    11% 50%,    /* 갈라진 홈 */
+    0% 87%,     /* 꼬리 아래 끝 */
+    17% 66%,    /* 꼬리자루 — 잘록한 곳 */
+    31% 88%,
+    50% 99%,    /* 배가 가장 넓다 */
+    70% 95%,
+    86% 80%,
+    96% 63%,
+    100% 50%,   /* 주둥이 */
+    96% 37%,
+    86% 20%,
+    70% 5%,
+    50% 1%,     /* 등 */
+    31% 12%,
+    17% 34%     /* 꼬리자루 위 */
+  );
 }
-.fish::after{                       /* 눈 — 머리 쪽 끝에 */
-  content:'';position:absolute;right:11px;top:50%;
-  width:4px;height:4px;margin-top:-2px;border-radius:50%;
-  background:currentColor;opacity:.5;
+.btn.fish{position:relative}
+.btn.fish::after{                      /* 눈 — 주둥이 가까이 */
+  content:'';position:absolute;right:17px;top:50%;
+  width:4.5px;height:4.5px;margin-top:-2.25px;border-radius:50%;
+  background:currentColor;opacity:.55;
 }
-/* 버튼은 몸통이 38px 이라 19px 꼬리는 작아 보인다 — 몸통의 60% 안팎이 물고기로 읽힌다.
-   3px 겹쳐 붙여야 알약의 둥근 끝과 꼬리 사이가 벌어지지 않는다 */
-.btn.fish{padding-right:25px;margin-left:15px}
-.btn.fish::before{width:16px;height:23px;margin-top:-11.5px;left:-13px}
-/* 테두리만 있는 버튼은 배경이 투명이라 꼬리가 안 보인다 — 테두리 색을 꼬리에 준다 */
-.btn--outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.28)}
-.btn--outline:hover{background:rgba(255,255,255,.1)}
-.btn--outline.fish::before{background:rgba(255,255,255,.32)}
+.btn.fish{position:relative}
 
 /* ═══════════════════════════════════════════════════════════
    6 · 히어로
@@ -893,7 +885,7 @@ h3,.h3{font-size:clamp(20px,1.8vw,28px);font-weight:700;line-height:1.3;letter-s
      width 를 키우면 레이아웃이 매 프레임 다시 계산되고, 폭 0 일 때 안의 기간 텍스트가
      막대 밖으로 삐져나온다. clip-path 는 합성 단계라 둘 다 없다 */
   .motion .tl-bar{clip-path:inset(0 100% 0 0);transition:clip-path 700ms var(--ease)}
-  .motion .tl-bar.in{clip-path:inset(0 0 0 0)}
+  .motion .tl-track.in .tl-bar{clip-path:inset(0 0 0 0)}
 
   /* ── 그래프 진입 ──
      막대와 비교 막대는 안에 글자가 없다. 그래서 width/height 대신 transform 으로 키운다 —
