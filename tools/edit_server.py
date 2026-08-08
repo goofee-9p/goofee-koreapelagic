@@ -138,7 +138,10 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         super().__init__(*a, directory=str(ROOT), **kw)
 
     def log_message(self, fmt, *args):
-        if "__" not in (args[0] if args else ""):
+        # 편집용 내부 경로(/__edit.js · /__save · /__pdf)는 로그에서 걸러 낸다.
+        # 오류 로그는 첫 인자가 문자열이 아니라 상태 코드다 — 그때는 그냥 찍는다.
+        first = args[0] if args else ""
+        if not isinstance(first, str) or "__" not in first:
             super().log_message(fmt, *args)
 
     # ── 편집 스크립트는 파일에 심지 않고 응답에만 끼워 넣는다 ──
