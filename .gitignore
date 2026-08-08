@@ -16,6 +16,7 @@ desktop.ini
 # 작업용 문서·도구 상태 — 저장소는 public 이라 올리지 않는다
 # PRODUCT.md 는 채용 공고 분석과 포지셔닝 전략이 들어 있어 담당자에게 보이면 안 된다
 PRODUCT.md
+작업메모.md
 .impeccable/
 .claude/skills/
 .claude/settings.local.json
