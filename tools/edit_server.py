@@ -116,7 +116,10 @@ def rebuild_pdf(which: str) -> dict:
     else:
         url = f"http://localhost:{PORT}/"
         out = ROOT / "포트폴리오_구병기_코리아펠라직.pdf"
+    # --window-size 는 빼면 안 된다. 헤드리스 크롬은 창 크기(기본 800)로 미디어쿼리를
+    # 따지기 때문에, 지면은 1440 인데 좁은 화면용 규칙이 켜져 단이 무너진 채로 인쇄된다
     cmd = [chrome, "--headless", "--disable-gpu", "--no-pdf-header-footer",
+           "--window-size=1440,1020",
            "--virtual-time-budget=22000", f"--print-to-pdf={out}", url]
     try:
         subprocess.run(cmd, check=True, capture_output=True, timeout=180)
