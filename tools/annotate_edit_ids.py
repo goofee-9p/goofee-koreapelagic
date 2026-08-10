@@ -19,9 +19,15 @@ TAGS = {"h1", "h2", "h3", "h4", "p", "li", "figcaption", "blockquote"}
 # span·div 는 클래스로 잡는다. 이력서는 본문이 대부분 div 안에 있다
 CLASS_TARGETS = {
     "tag", "chip", "vspec", "label", "eyebrow",          # 포트폴리오 칩
+    "cont-d", "cont-x",                                   # 기여도 옆 역할·협업 범위
+    # cont-v(숫자)는 일부러 뺐다 — 저장할 때 <i>%</i> 가 걸러져 서식이 깨지고,
+    # 막대 비율(style="--p:80")까지 같이 고쳐야 해서 HTML 에서 직접 고친다
     "intro", "role", "job-sub", "past-d", "meta", "term",  # 이력서 본문
     "d", "v", "k", "t", "n", "no", "cat", "x", "q", "ds",
 }
+# 안쪽 구조가 곧 의미인 요소 — 통째로 바꾸면 구조가 날아간다.
+# .cont 는 li 로도 쓰여 TAGS 에 걸리므로 여기서 따로 막는다
+CLASS_SKIP = {"cont"}
 VOID = {"br", "img", "input", "meta", "link", "hr", "source", "track", "area", "base", "col", "embed", "param", "wbr"}
 
 
@@ -47,6 +53,8 @@ class Scanner(HTMLParser):
         a = dict(attrs)
         classes = set((a.get("class") or "").split())
         is_target = tag in TAGS or (tag in ("span", "div") and classes & CLASS_TARGETS)
+        if classes & CLASS_SKIP:
+            is_target = False
         node = {
             "tag": tag,
             "start": self._pos(),
