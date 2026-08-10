@@ -9,7 +9,7 @@
 <meta name="googlebot" content="noindex,nofollow">
 <!-- ?v= 는 캐시 무효화용. GitHub Pages 가 CSS·JS 를 max-age=600 으로 10분간 붙들기 때문에,
      이 숫자를 바꾸지 않으면 푸시해도 방문자 화면이 그대로다. 배포 때마다 갱신한다 -->
-<link rel="stylesheet" href="assets/css/site.css?v=202608102055">
+<link rel="stylesheet" href="assets/css/site.css?v=202608110820">
 <!-- 첫 화면의 그림은 히어로 영상의 poster 다. 영상이 뜨기 전에 이것이 자리를 잡아야
      채용 담당자가 여는 순간 빈 카드를 보지 않는다 -->
 <link rel="preload" as="image" href="assets/poster/ad_ninja_blast_9x16.jpg" fetchpriority="high">
@@ -406,7 +406,7 @@
         <div class="body">
           <p class="label" style="color:var(--brand-ink)" data-edit="e103">카피 축 01</p>
           <p class="h3 mt6" data-edit="e104">혜택이 강할 땐 혜택을 먼저</p>
-          <p class="cap" style="margin-top:var(--s3);font-size:14.5px" data-edit="e105">
+          <p class="cap" style="margin-top:var(--s3)" data-edit="e105">
             스크롤을 멈추게 하는 건 대개 숫자입니다. 할인율과 기간을 가장 크게 둡니다.</p>
           <p class="q" data-edit="e106">“메가위크 최대 15% 할인!”</p>
         </div>
@@ -416,7 +416,7 @@
         <div class="body">
           <p class="label" style="color:var(--brand-ink)" data-edit="e107">카피 축 02</p>
           <p class="h3 mt6" data-edit="e108">소비자들이 진짜 느끼는 USP</p>
-          <p class="cap" style="margin-top:var(--s3);font-size:14.5px" data-edit="e109">
+          <p class="cap" style="margin-top:var(--s3)" data-edit="e109">
             리뷰에서 반복되는 특장점을 그대로 씁니다.<br>소비자들이 진짜 원하는 부분을 터치합니다.</p>
           <p class="q" data-edit="e110">“머리카락부터 각종 털까지 엉킴 걱정 NO”</p>
         </div>
@@ -426,7 +426,7 @@
         <div class="body">
           <p class="label" style="color:var(--brand-ink)" data-edit="e111">카피 축 03</p>
           <p class="h3 mt6" data-edit="e112">소비자가 경험할 장면으로</p>
-          <p class="cap" style="margin-top:var(--s3);font-size:14.5px" data-edit="e113">
+          <p class="cap" style="margin-top:var(--s3)" data-edit="e113">
             스펙 대신 언제 쓰는 물건인지를 보여줍니다.<br>가전은 이 축이 특히 성과가 좋았습니다.</p>
           <p class="q" data-edit="e114">“집들이 파티에도 닌자로 이지쿠킹”</p>
         </div>
@@ -869,8 +869,7 @@
             <text class="lb" x="258" y="53" font-size="11" fill="#767676">−10%</text>
             <text class="lb" x="258" y="112" font-size="11" fill="#767676">−39%</text>
           </svg>
-          <div class="slp-x" style="display:flex;justify-content:space-between;font-size:12.5px;
-               color:var(--ink-3);padding-inline:4px"><span>재편 전</span><span>재편 후</span></div>
+          <div class="slp-x"><span>재편 전</span><span>재편 후</span></div>
           <p class="gb-note" data-edit="e258">재편 전을 100으로 둔 지수입니다. 광고비를 39% 줄이는 동안 매출은 10%만 빠졌습니다.<br>
             같은 구간에서 CTR 1.8% → 3.2% · 25SS 도달수 KPI 목표 +71% / 유입수 KPI 목표 +79%</p>
         </div>
@@ -925,7 +924,7 @@
           <p class="label" style="color:var(--brand-ink)" data-edit="e276">AI Assistant</p>
           <p class="small" style="margin-top:var(--s3);line-height:1.55" data-edit="e277">
             지표를 찾아 읽는 대신 물어보면 근거와 함께 답합니다.</p>
-          <p class="note" style="margin-top:var(--s4);font-size:14px" data-edit="e278">
+          <p class="note" style="margin-top:var(--s4)" data-edit="e278">
             “금주 데이터 기준으로 파워링크 키워드 입찰 조정 제안해줘”</p>
         </div>
         <p class="quote" data-edit="e279">“원하는 데이터를 빠르게 확인할 수 있고 디자인이 예뻐요”<em>팀 내부 피드백</em></p>
@@ -967,8 +966,8 @@
         <p class="h2" style="margin-top:var(--s3);line-height:1.15" data-edit="e299"><span class="acc num">다채널 리뷰 10만개 분석<br>→ 20분</span></p>
         <p class="cap" style="margin-top:var(--s3)" data-edit="e300">리뷰 수집·분석 소요 시간 −83%<br>10만 건 이상을 20분 내 수집·분석</p>
         <ul class="rs-list">
-          <li data-edit="e301"><span>국내</span><b style="font-size:14px">올리브영 · 오늘의집 · 무신사 · 네이버 · 하이마트 · 쿠팡</b></li>
-          <li data-edit="e302"><span>해외</span><b style="font-size:14px">큐텐(JP) · 아마존</b></li>
+          <li class="rs--names" data-edit="e301"><span>국내</span><b>올리브영 · 오늘의집 · 무신사 · 네이버 · 하이마트 · 쿠팡</b></li>
+          <li class="rs--names" data-edit="e302"><span>해외</span><b>큐텐(JP) · 아마존</b></li>
         </ul>
         <p class="note" data-edit="e303">리뷰와 함께 상품 정보까지 수집해 경쟁 제품과 같은 축으로 비교했습니다.</p>
         <p class="quote" data-edit="e304">“리뷰 수집하고 분석하는데 오래 걸렸는데, 이제는 간편하네요”<em>팀 내부 피드백</em></p>
