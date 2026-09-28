@@ -440,6 +440,11 @@ h3,.h3{font-size:clamp(20px,1.8vw,28px);font-weight:700;line-height:1.3;letter-s
 /* 세로 영상만 나열할 때 */
 .vrow--v3{grid-template-columns:repeat(3,minmax(0,1fr))}
 .vrow--v4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.vrow--v5{grid-template-columns:repeat(5,minmax(0,1fr))}
+/* 카드째 외부 영상으로 연결 — 칸 폭을 그대로 채우고, 올리면 살짝 뜬다 */
+.vlink{display:block}
+.vlink .vcard{transition:transform 220ms var(--ease)}
+.vlink:hover .vcard{transform:translateY(-3px)}
 .sec--dark .vrow figcaption{color:var(--on-dark-3)}
 
 /* ═══════════════════════════════════════════════════════════
@@ -710,14 +715,6 @@ h3,.h3{font-size:clamp(20px,1.8vw,28px);font-weight:700;line-height:1.3;letter-s
 /* 메노킨 소재 다섯 장 — .wall 은 좁아지면 4열로 접혀 한 장이 홀로 남는다. 5열을 지킨다 */
 .wall.wall--jp{grid-template-columns:repeat(5,minmax(0,1fr))}
 
-/* 출연형 숏폼 — 세로 영상 한 장 + 설명. 요리 영상 줄과 선 하나로 갈라 '다른 형식' 임을 보인다 */
-.talk{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:clamp(32px,5vw,88px);
-      align-items:center;margin-top:var(--s9);padding-top:var(--s8);border-top:1px solid var(--line)}
-.talk-v{display:block}
-.talk-v .vcard{transition:transform 220ms var(--ease),box-shadow 220ms var(--ease)}
-.talk-v:hover .vcard{transform:translateY(-3px)}
-.talk-b{max-width:600px}
-
 /* 다섯 단계 파이프라인 — .flow 와 같은 눈금 어휘, 칸만 다섯 */
 .flow--5{grid-template-columns:repeat(5,minmax(0,1fr))}
 .card .flow{margin-top:var(--s6)}
@@ -810,8 +807,6 @@ html[data-shot] .rail,html[data-shot] .scroll-hint{display:none}
   .wall--jp img{grid-column:span 2}
   .wall--jp img:nth-child(n+4){grid-column:span 3}
   .now-b{grid-template-columns:minmax(0,1fr);gap:var(--s3)}
-  .talk{grid-template-columns:minmax(0,1fr);gap:var(--s6)}
-  .talk-v{max-width:280px}
 }
 @media (max-width:1180px){
   .tk-grid{grid-template-columns:1fr 1fr;gap:var(--s5)}
@@ -834,6 +829,7 @@ html[data-shot] .rail,html[data-shot] .scroll-hint{display:none}
   .flow,.loop{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:var(--s6)}
   .vrow--mix,.vrow--v3{grid-template-columns:repeat(2,minmax(0,1fr))}
   .vrow--v4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .vrow--v5{grid-template-columns:repeat(3,minmax(0,1fr))}
   .rda-track{grid-template-columns:minmax(0,1fr)}
   .rda-track .up{text-align:left}
   .rda-track .seam{left:0;right:0;top:50%;bottom:auto;width:auto;height:3px;transform:translateY(-50%)}
@@ -883,7 +879,7 @@ html[data-shot] .rail,html[data-shot] .scroll-hint{display:none}
   .g2,.g3,.g4{grid-template-columns:minmax(0,1fr)}
   .flow,.loop{grid-template-columns:minmax(0,1fr);row-gap:var(--s5)}
   .flow .sx .d,.loop .s4 .d{max-width:none}
-  .vrow--mix,.vrow--v3,.vrow--v4{grid-template-columns:minmax(0,1fr)}
+  .vrow--mix,.vrow--v3,.vrow--v4,.vrow--v5{grid-template-columns:minmax(0,1fr)}
   .vrow>figure{width:100%}
 }
 
@@ -990,6 +986,7 @@ html[data-shot] .rail,html[data-shot] .scroll-hint{display:none}
   .vrow--mix{grid-template-columns:0.5625fr 1fr 1fr!important}
   .vrow--v3{grid-template-columns:repeat(3,minmax(0,1fr))!important}
   .vrow--v4{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+  .vrow--v5{grid-template-columns:repeat(5,minmax(0,1fr))!important}
   .rda-track{grid-template-columns:1fr 1fr!important}
   .rda-track .up{text-align:right}
   .rda-track .seam{left:50%;right:auto;top:0;bottom:0;width:3px;height:auto;transform:translateX(-50%)}
@@ -1017,7 +1014,6 @@ html[data-shot] .rail,html[data-shot] .scroll-hint{display:none}
      새 장에서 시작하는 덩어리마다 따로 걸어 준다 */
   #cr-cook,#cr-archive,#cr-brand,#cr-jp{display:block}
   #cr-cook .split,
-  #cr-cook .talk,
   .arch-row+.arch-row,
   #cr-brand .split,
   #cr-jp .split{
@@ -1034,8 +1030,8 @@ html[data-shot] .rail,html[data-shot] .scroll-hint{display:none}
      margin-top 은 인라인 스타일이라 !important 없이는 안 지워진다 —
      남겨 두면 새 장 위에 64px 이 붙어 뒤에 빈 장이 하나 생긴다 */
   #cr-cook .split{margin-top:0!important;min-height:980px;align-content:center}
-  #cr-cook .talk{margin-top:0;padding-top:0;border-top:0;min-height:980px;
-                 grid-template-columns:320px minmax(0,1fr)!important}
+  /* 영상 줄이 다섯 칸이 되면서 키가 줄었다 — 첫 장은 머리를 내려 세로 가운데에 앉힌다 */
+  #cr-cook .sec-head{padding-top:110px}
 
   /* 소재 아카이브 — 브랜드 하나가 한 장.
      마지막 줄은 뒤에 붙는 캡션(40+21)과 아래 여백(40)만큼 낮게 잡는다 */
