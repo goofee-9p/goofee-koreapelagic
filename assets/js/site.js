@@ -142,4 +142,84 @@
     }, { rootMargin: '-45% 0px -50% 0px' });
     sections.forEach(function (s) { sio.observe(s); });
   }
+
+  /* ── 소재 아카이브 — 흐르는 벽 ──
+     줄마다 원본 묶음을 화면 폭 이상이 되게 이어 붙이고, 그 절반을 한 번 더 붙여
+     -50% 이동을 이음새 없이 반복한다. 라이브러리 없이 Web Animations 로 돌린다 —
+     재생 속도를 부드럽게 바꿀 수 있어 '올리면 그 줄만 느려지는' 동작이 된다.
+     모션을 끈 사람 · 인쇄 · 스크립트 미실행에서는 멈춘 줄로 남고 손으로 밀어 볼 수 있다 */
+  var amRows = document.querySelectorAll('.am-row');
+  if (amRows.length && !reduced && !printing && 'animate' in Element.prototype) {
+    var amRuns = [];
+    amRows.forEach(function (row) {
+      var track = row.querySelector('.am-track');
+      if (!track) return;
+      var imgs = track.children;
+      var n = imgs.length;
+      if (!n) return;
+
+      /* 소재는 정사각형이라 폭 = 줄 높이. 이미지를 기다리지 않고 한 묶음 길이를 안다 */
+      var h = row.clientHeight;
+      var gap = parseFloat(getComputedStyle(track).columnGap) || 14;
+      var setW = n * (h + gap);
+      var need = Math.max(window.innerWidth, (window.screen && screen.width) || 0);
+      var reps = Math.max(1, Math.ceil(need / setW));
+
+      var unit = track.innerHTML, half = '';
+      for (var r = 0; r < reps; r++) half += unit;
+      track.innerHTML = half + half;
+      /* 복제본은 읽기 도구에 두 번 읽히지 않게 숨긴다 */
+      Array.prototype.forEach.call(track.children, function (img, k) {
+        if (k >= n) { img.setAttribute('alt', ''); img.setAttribute('aria-hidden', 'true'); }
+      });
+
+      /* 속도는 '초당 몇 장이 지나가나' 로 맞춘다 — 줄 높이가 달라도 같은 빠르기로 읽힌다 */
+      var pxPerSec = 64 * (h / 230);
+      var dir = parseFloat(row.getAttribute('data-dir')) || 1;
+      var anim = track.animate(
+        [{ transform: 'translateX(' + (dir > 0 ? 0 : -50) + '%)' },
+         { transform: 'translateX(' + (dir > 0 ? -50 : 0) + '%)' }],
+        { duration: (reps * setW) / pxPerSec * 1000, iterations: Infinity });
+      anim.pause();
+      row.classList.add('is-run');
+
+      /* 호버 감속 — 재생 속도를 목표값 쪽으로 조금씩 당긴다 (현재 위치는 유지된다) */
+      var rate = 1, target = 1, raf = 0;
+      function ease() {
+        rate += (target - rate) * 0.12;
+        if (Math.abs(target - rate) < 0.01) rate = target;
+        anim.playbackRate = rate;
+        raf = rate !== target ? requestAnimationFrame(ease) : 0;
+      }
+      function setRate(v) { target = v; if (!raf) raf = requestAnimationFrame(ease); }
+      row.addEventListener('mouseenter', function () { setRate(0.22); });
+      row.addEventListener('mouseleave', function () { setRate(1); });
+
+      amRuns.push({ row: row, anim: anim, loaded: false });
+    });
+
+    /* 화면 근처에서만 돈다. 가까워지면 그 줄의 소재를 한꺼번에 받아 둔다 —
+       잘린 영역(overflow) 밖은 지연 로딩이 끝내 발동하지 않아, 흘러 들어오는 순간 빈 칸이 된다 */
+    if ('IntersectionObserver' in window) {
+      var amio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          amRuns.forEach(function (it) {
+            if (it.row !== e.target) return;
+            if (e.isIntersecting) {
+              if (!it.loaded) {
+                it.row.querySelectorAll('img').forEach(function (img) { img.loading = 'eager'; });
+                it.loaded = true;
+              }
+              it.anim.play();
+            } else {
+              it.anim.pause();
+            }
+          });
+        });
+      }, { rootMargin: '400px 0px' });
+      amRuns.forEach(function (it) { amio.observe(it.row); });
+    } else {
+      amRuns.forEach(function (it) { it.anim.play(); });
+    }
+  }
 })();
