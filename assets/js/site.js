@@ -154,14 +154,13 @@
     amRows.forEach(function (row) {
       var track = row.querySelector('.am-track');
       if (!track) return;
-      var imgs = track.children;
-      var n = imgs.length;
+      var n = track.children.length;
       if (!n) return;
 
-      /* 소재는 정사각형이라 폭 = 줄 높이. 이미지를 기다리지 않고 한 묶음 길이를 안다 */
+      /* 한 묶음 길이 = 트랙 폭. 소재는 정사각형(폭 = 줄 높이), 목차 카드는 폭이 고정이라
+         이미지를 기다리지 않아도 정확하다. 오른쪽 패딩이 간격과 같아 묶음을 이어도 틈이 맞는다 */
       var h = row.clientHeight;
-      var gap = parseFloat(getComputedStyle(track).columnGap) || 14;
-      var setW = n * (h + gap);
+      var setW = track.scrollWidth;
       var need = Math.max(window.innerWidth, (window.screen && screen.width) || 0);
       var reps = Math.max(1, Math.ceil(need / setW));
 
@@ -169,12 +168,18 @@
       for (var r = 0; r < reps; r++) half += unit;
       track.innerHTML = half + half;
       /* 복제본은 읽기 도구에 두 번 읽히지 않게 숨긴다 */
-      Array.prototype.forEach.call(track.children, function (img, k) {
-        if (k >= n) { img.setAttribute('alt', ''); img.setAttribute('aria-hidden', 'true'); }
+      Array.prototype.forEach.call(track.children, function (el, k) {
+        if (k < n) return;
+        el.setAttribute('aria-hidden', 'true');
+        /* 편집 모드 이름표가 두 벌이 되면 어느 쪽을 고쳤는지 헷갈린다 — 복제본에서는 뗀다 */
+        el.removeAttribute('data-edit');
+        el.querySelectorAll('[data-edit]').forEach(function (d) { d.removeAttribute('data-edit'); });
+        el.querySelectorAll('img').forEach(function (img) { img.setAttribute('alt', ''); });
+        if (el.tagName === 'IMG') el.setAttribute('alt', '');
       });
 
       /* 속도는 '초당 몇 장이 지나가나' 로 맞춘다 — 줄 높이가 달라도 같은 빠르기로 읽힌다 */
-      var pxPerSec = 64 * (h / 230);
+      var pxPerSec = 48 * (h / 200);
       var dir = parseFloat(row.getAttribute('data-dir')) || 1;
       var anim = track.animate(
         [{ transform: 'translateX(' + (dir > 0 ? 0 : -50) + '%)' },

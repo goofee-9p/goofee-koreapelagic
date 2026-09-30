@@ -460,27 +460,31 @@ h3,.h3{font-size:clamp(20px,1.8vw,28px);font-weight:700;line-height:1.3;letter-s
 /* ═══════════════════════════════════════════════════════════
    10-C2 · 소재 아카이브 — 흐르는 벽
    ═══════════════════════════════════════════════════════════ */
-/* 화면 폭을 다 쓴다(.wrap 밖). 브랜드당 한 줄, 줄마다 번갈아 반대로 흐른다 — '많다'가 한눈에 온다.
+/* 화면 폭을 다 쓴다(.wrap 밖). 두 줄이 서로 반대로 흐른다 — 벽처럼 쌓지 않고 띠 두 개로 둔다.
    기본 상태는 멈춘 줄이고 손으로 가로로 밀 수 있다. 흐르게 하는 건 site.js 가 덧씌운다(.is-run) */
-.arch-marquee{margin-top:var(--s8);display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+.arch-marquee{margin-top:var(--s8);display:grid;grid-template-columns:minmax(0,1fr);gap:20px;
+  /* 양 끝을 칼같이 자르지 않고 흐려서 사라지게 한다 — 띠가 화면 밖에서 이어지는 느낌 */
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);
+          mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%)}
 /* min-width:0 — 그리드 칸은 기본으로 내용 폭까지 늘어난다. 그러면 줄이 소재 전체 길이가 되어
    화면 밖은 잘려 보이기만 하고 손으로 밀 수가 없다. 줄 폭을 화면에 묶는다 */
-.am-row{position:relative;min-width:0;--h:clamp(150px,17vw,230px);height:var(--h)}
+.am-row{position:relative;min-width:0;--h:clamp(150px,14vw,200px);height:var(--h)}
 .am-view{height:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:none}
 .am-view::-webkit-scrollbar{display:none}
 /* 흐르는 동안에는 손 스크롤을 막는다 — 둘이 다투면 줄이 튄다 */
 .am-row.is-run .am-view{overflow:hidden}
-.am-track{display:flex;gap:14px;width:max-content;height:100%}
+/* 오른쪽 패딩 = 간격. 묶음 두 벌을 이어 붙였을 때 -50% 가 정확히 한 묶음 길이가 되어 이음새가 튀지 않는다 */
+.am-track{display:flex;gap:16px;padding-right:16px;width:max-content;height:100%}
 /* 소재는 전부 정사각형 — 폭을 높이에서 바로 정해 이미지가 오기 전에도 줄 길이가 확정된다 */
-.am-track img{height:100%;width:auto;aspect-ratio:1;object-fit:cover;flex:0 0 auto;display:block;
-              border-radius:var(--r-sm);border:1px solid var(--line);background:var(--surface);
+.am-track>img{height:100%;width:auto;aspect-ratio:1;object-fit:cover;flex:0 0 auto;display:block;
+              border-radius:12px;border:1px solid var(--line);background:var(--surface);
               transition:transform 350ms var(--ease)}
-.am-track img:hover{transform:scale(1.035)}
-/* 브랜드 이름표 — 소재 위에 떠 있어도 읽히게 어두운 반투명 면 */
-.am-tag{position:absolute;left:18px;bottom:14px;z-index:2;pointer-events:none;
-        font-size:12px;font-weight:700;padding:7px 14px;border-radius:var(--r-pill);
-        background:rgba(19,18,17,.78);color:#fff;
-        -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.am-track>img:hover{transform:scale(1.03)}
+/* 브랜드 목차 카드 — 소재와 같은 높이의 조용한 면. 로고가 위, 분류와 수량이 아래 */
+.am-brand{flex:0 0 auto;width:calc(var(--h) * .82);height:100%;border-radius:12px;background:var(--panel);
+          display:flex;flex-direction:column;justify-content:space-between;padding:18px}
+.am-brand img{display:block;max-height:22px;max-width:100%;width:auto;height:auto;object-fit:contain;object-position:left}
+.am-brand .k{font-size:12.5px;font-weight:600;line-height:1.4;color:var(--ink-3)}
 #cr-archive .wall-cap{margin-top:var(--s6)}
 
 /* ═══════════════════════════════════════════════════════════
@@ -833,7 +837,7 @@ html[data-shot] .rail,html[data-shot] .scroll-hint{display:none}
   .g3{grid-template-columns:repeat(2,minmax(0,1fr))}
   .bsum{grid-template-columns:minmax(0,1fr);gap:var(--s4)}
   .swall{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .am-row{--h:clamp(120px,26vw,170px)}
+  .am-row{--h:clamp(120px,30vw,170px)}
 }
 /* 히어로는 1200 에서 이미 1단으로 접었다. 여기서 2단을 되살리면
    861–1024 구간에서만 다시 2단이 되어 카드가 눌린다 — .about 만 남긴다 */
@@ -939,11 +943,21 @@ html[data-shot] .rail,html[data-shot] .scroll-hint{display:none}
   /* 지면 폭은 1440 으로 고정돼 있다. 화면용 컨테이너 탈출을 그대로 두면 지면 밖으로 나간다 */
   .bleed{margin-inline:0!important;padding-inline:0!important}
 
-  /* 소재 아카이브 — 지면에서는 흐르지 않는다. 네 줄이 멈춘 채 한 장에 선다.
-     줄 높이를 낮춰 한 줄에 여덟아홉 장씩 보이게 한다 */
-  #cr-archive .arch-marquee{margin-top:28px;gap:12px}
-  #cr-archive .am-row{--h:144px}
-  #cr-archive .am-view{overflow:hidden!important}
+  /* 소재 아카이브 — 지면에서는 흐르지 않는다. 멈춘 두 줄을 그대로 찍으면 앞부분(샤크닌자 · 지누스)만
+     나와 디스커버리 · 메노킨이 빠진다. 줄을 접어 '로고 카드 + 소재 10장' 이 한 줄씩 서게 한다 —
+     카드(0.82칸) + 10장 + 간격이 본문 폭(1296)에 딱 들어가는 크기가 104px 이다 */
+  #cr-archive .arch-marquee{margin-top:32px;gap:12px;padding-inline:72px;
+                            -webkit-mask-image:none;mask-image:none}
+  #cr-archive .am-row{--h:104px;height:auto}
+  #cr-archive .am-view{height:auto;overflow:visible!important}
+  #cr-archive .am-track{flex-wrap:wrap;row-gap:12px;gap:12px;width:auto;height:auto;padding-right:0}
+  #cr-archive .am-track>img,#cr-archive .am-brand{height:var(--h)}
+  #cr-archive .am-brand{padding:12px}
+  #cr-archive .am-brand img{max-height:16px}
+  #cr-archive .am-brand .k{font-size:10.5px}
+  #cr-archive .am-brand .wm{font-size:13px}
+  /* 흐르게 하려고 이어 붙인 복제본은 지면에 찍지 않는다 */
+  #cr-archive .am-track>[aria-hidden="true"]{display:none}
 
   /* ④ 인쇄에서도 설계 폭(1440) 레이아웃 유지.
      헤드리스 크롬은 창 크기(기본 800)로 미디어쿼리를 따진다 — 지면은 1440 인데

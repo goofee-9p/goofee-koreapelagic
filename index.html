@@ -9,7 +9,7 @@
 <meta name="googlebot" content="noindex,nofollow">
 <!-- ?v= 는 캐시 무효화용. GitHub Pages 가 CSS·JS 를 max-age=600 으로 10분간 붙들기 때문에,
      이 숫자를 바꾸지 않으면 푸시해도 방문자 화면이 그대로다. 배포 때마다 갱신한다 -->
-<link rel="stylesheet" href="assets/css/site.css?v=202609300919">
+<link rel="stylesheet" href="assets/css/site.css?v=202609300937">
 <!-- 첫 화면의 그림은 히어로 영상의 poster 다. 영상이 뜨기 전에 이것이 자리를 잡아야
      채용 담당자가 여는 순간 빈 카드를 보지 않는다 -->
 <link rel="preload" as="image" href="assets/poster/cook_02.jpg" fetchpriority="high">
@@ -221,7 +221,7 @@
           <li data-edit="e042"><i>05</i>성과를 보고 소재를 고치는 <em>루프</em></li>
           <!-- 아카이브는 사례가 아니라 참고자료다 — 번호를 매기지 않는다.
                Operations 가 06 부터 시작하므로 번호가 겹치지도 않는다 -->
-          <li class="ref" data-edit="e041"><i></i>기획 소재 Reference — 4개 브랜드 35종</li>
+          <li class="ref" data-edit="e041"><i></i>기획 소재 Reference — 4개 브랜드 33종</li>
         </ul>
       </a>
 
@@ -539,12 +539,14 @@
     </div>
   </div>
 
-  <!-- 흐르는 소재 벽 — 화면 폭을 다 쓰고, 네 줄이 번갈아 반대로 흐른다. 올리면 그 줄만 느려진다.
+  <!-- 흐르는 소재 벽 — 화면 폭을 다 쓰고, 두 줄이 서로 반대로 흐른다. 올리면 그 줄만 느려진다.
+       브랜드가 바뀌는 자리에 로고 카드가 목차처럼 끼어든다 — 소재 위에 이름표를 얹지 않는다.
        스크립트가 안 돌거나 모션을 끈 사람에게는 멈춘 줄로 남고, 손으로 가로로 밀어 끝까지 볼 수 있다 -->
-  <div class="arch-marquee rv" aria-label="기획 소재 35종 아카이브">
+  <div class="arch-marquee rv" aria-label="기획 소재 33종 아카이브">
     <div class="am-row" data-dir="1">
       <div class="am-view">
         <div class="am-track">
+          <div class="am-brand"><img src="assets/img/logo_sharkninja.png" alt="SharkNinja" loading="lazy" decoding="async"><p class="k" data-edit="e448">가전 · 10종</p></div>
           <img src="assets/creatives/shark_360_suction.jpg" alt="샤크 360° 흡입" loading="lazy" decoding="async">
           <img src="assets/creatives/ninja_04.jpg" alt="샤크 에보파워 시스템" loading="lazy" decoding="async">
           <img src="assets/creatives/ninja_campingbag.jpg" alt="닌자 캠핑백" loading="lazy" decoding="async">
@@ -555,30 +557,7 @@
           <img src="assets/creatives/ninja_07.jpg" alt="샤크 파워클린 360" loading="lazy" decoding="async">
           <img src="assets/creatives/ninja_08.jpg" alt="블랙프라이데이 세일" loading="lazy" decoding="async">
           <img src="assets/creatives/ninja_06.jpg" alt="닌자 넵다세일" loading="lazy" decoding="async">
-        </div>
-      </div>
-      <span class="am-tag">샤크닌자 · 가전</span>
-    </div>
-    <div class="am-row" data-dir="-1">
-      <div class="am-view">
-        <div class="am-track">
-          <img src="assets/creatives/zinus_01.jpg" alt="지누스 파이널 페스타" loading="lazy" decoding="async">
-          <img src="assets/creatives/zinus_02.jpg" alt="지누스 침대 세트 라이브" loading="lazy" decoding="async">
-          <img src="assets/creatives/zinus_03.jpg" alt="리빙슈퍼세일위크" loading="lazy" decoding="async">
-          <img src="assets/creatives/zinus_04.jpg" alt="에어앤울티마 특가데이" loading="lazy" decoding="async">
-          <img src="assets/creatives/zinus_05.jpg" alt="베스트 어워즈" loading="lazy" decoding="async">
-          <img src="assets/creatives/zinus_06.jpg" alt="지누스 라이브" loading="lazy" decoding="async">
-          <img src="assets/creatives/zinus_07.jpg" alt="상반기 결산 베스트 어워즈 라이브" loading="lazy" decoding="async">
-          <img src="assets/creatives/zinus_08.jpg" alt="베스트 어워즈" loading="lazy" decoding="async">
-          <img src="assets/creatives/zinus_09.jpg" alt="리빙슈퍼세일위크" loading="lazy" decoding="async">
-          <img src="assets/creatives/zinus_10.jpg" alt="베스트픽 라이브" loading="lazy" decoding="async">
-        </div>
-      </div>
-      <span class="am-tag">지누스 · 홈퍼니싱</span>
-    </div>
-    <div class="am-row" data-dir="1">
-      <div class="am-view">
-        <div class="am-track">
+          <div class="am-brand"><img src="assets/img/logo_discovery.png" alt="Discovery Expedition" loading="lazy" decoding="async"><p class="k" data-edit="e449">패션 · 10종</p></div>
           <img src="assets/creatives/discovery_01.jpg" alt="디스커버리 트레킹화" loading="lazy" decoding="async">
           <img src="assets/creatives/discovery_02.jpg" alt="프레시벤트 티셔츠" loading="lazy" decoding="async">
           <img src="assets/creatives/discovery_03.jpg" alt="볼트 메쉬" loading="lazy" decoding="async">
@@ -591,19 +570,27 @@
           <img src="assets/creatives/discovery_10.jpg" alt="접촉냉감 반팔티" loading="lazy" decoding="async">
         </div>
       </div>
-      <span class="am-tag">디스커버리 · 패션</span>
     </div>
     <div class="am-row" data-dir="-1">
       <div class="am-view">
         <div class="am-track">
-          <img src="assets/creatives/menokin_a1.jpg" alt="메노킨 3종세트 소재 — 기본 표기" loading="lazy" decoding="async">
-          <img src="assets/creatives/menokin_a2.jpg" alt="메노킨 3종세트 소재 — 취소선 정가 표기" loading="lazy" decoding="async">
-          <img src="assets/creatives/menokin_a3.jpg" alt="메노킨 3종세트 소재 — 개당 단가 표기" loading="lazy" decoding="async">
+          <div class="am-brand"><img src="assets/img/logo_zinus.png" alt="ZINUS" loading="lazy" decoding="async"><p class="k" data-edit="e450">홈퍼니싱 · 10종</p></div>
+          <img src="assets/creatives/zinus_01.jpg" alt="지누스 파이널 페스타" loading="lazy" decoding="async">
+          <img src="assets/creatives/zinus_02.jpg" alt="지누스 침대 세트 라이브" loading="lazy" decoding="async">
+          <img src="assets/creatives/zinus_03.jpg" alt="리빙슈퍼세일위크" loading="lazy" decoding="async">
+          <img src="assets/creatives/zinus_04.jpg" alt="에어앤울티마 특가데이" loading="lazy" decoding="async">
+          <img src="assets/creatives/zinus_05.jpg" alt="베스트 어워즈" loading="lazy" decoding="async">
+          <img src="assets/creatives/zinus_06.jpg" alt="지누스 라이브" loading="lazy" decoding="async">
+          <img src="assets/creatives/zinus_07.jpg" alt="상반기 결산 베스트 어워즈 라이브" loading="lazy" decoding="async">
+          <img src="assets/creatives/zinus_08.jpg" alt="베스트 어워즈" loading="lazy" decoding="async">
+          <img src="assets/creatives/zinus_09.jpg" alt="리빙슈퍼세일위크" loading="lazy" decoding="async">
+          <img src="assets/creatives/zinus_10.jpg" alt="베스트픽 라이브" loading="lazy" decoding="async">
+          <div class="am-brand"><b class="wm">메노킨</b><p class="k" data-edit="e451">뷰티 · 일본 · 3종</p></div>
+          <img src="assets/creatives/menokin_a1.jpg" alt="메노킨 3종세트 소재" loading="lazy" decoding="async">
           <img src="assets/creatives/menokin_b.jpg" alt="메노킨 選べる1+1 소재" loading="lazy" decoding="async">
           <img src="assets/creatives/menokin_single.jpg" alt="메노킨 단품 소재" loading="lazy" decoding="async">
         </div>
       </div>
-      <span class="am-tag">메노킨 · 뷰티(일본)</span>
     </div>
   </div>
 
@@ -1262,6 +1249,6 @@
   </div>
 </section>
 
-<script src="assets/js/site.js?v=202609300919"></script>
+<script src="assets/js/site.js?v=202609300937"></script>
 </body>
 </html>
