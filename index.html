@@ -9,7 +9,7 @@
 <meta name="googlebot" content="noindex,nofollow">
 <!-- ?v= 는 캐시 무효화용. GitHub Pages 가 CSS·JS 를 max-age=600 으로 10분간 붙들기 때문에,
      이 숫자를 바꾸지 않으면 푸시해도 방문자 화면이 그대로다. 배포 때마다 갱신한다 -->
-<link rel="stylesheet" href="assets/css/site.css?v=202609300937">
+<link rel="stylesheet" href="assets/css/site.css?v=202609301003">
 <!-- 첫 화면의 그림은 히어로 영상의 poster 다. 영상이 뜨기 전에 이것이 자리를 잡아야
      채용 담당자가 여는 순간 빈 카드를 보지 않는다 -->
 <link rel="preload" as="image" href="assets/poster/cook_02.jpg" fetchpriority="high">
@@ -534,19 +534,22 @@
       <h2 style="margin-top:var(--s4)" data-edit="e116">기획 소재 Reference</h2>
       <p class="lead" data-edit="e117">
         2년간 기획하고 디자인팀과 협업해 제작한 소재입니다.
-        가전은 스펙과 불편 해소, 홈퍼니싱은 할인율과 라이브 일정, 패션은 제품 이름과 룩 —
         카테고리마다 성과가 나는 문장이 달랐고, 직접 운영하며 그 차이를 데이터로 확인했습니다.</p>
     </div>
   </div>
 
-  <!-- 흐르는 소재 벽 — 화면 폭을 다 쓰고, 두 줄이 서로 반대로 흐른다. 올리면 그 줄만 느려진다.
-       브랜드가 바뀌는 자리에 로고 카드가 목차처럼 끼어든다 — 소재 위에 이름표를 얹지 않는다.
+  <!-- 흐르는 소재 벽 — 화면 폭을 다 쓰고, 세 줄이 번갈아 반대로 흐른다. 올리면 그 줄만 느려진다.
+       줄마다 위에 한 줄 — 소재를 만드는 방식(장점)을 적고, 그 줄의 소재가 근거가 된다.
        스크립트가 안 돌거나 모션을 끈 사람에게는 멈춘 줄로 남고, 손으로 가로로 밀어 끝까지 볼 수 있다 -->
   <div class="arch-marquee rv" aria-label="기획 소재 33종 아카이브">
-    <div class="am-row" data-dir="1">
-      <div class="am-view">
-        <div class="am-track">
-          <div class="am-brand"><img src="assets/img/logo_sharkninja.png" alt="SharkNinja" loading="lazy" decoding="async"><p class="k" data-edit="e448">가전 · 10종</p></div>
+    <div class="am-group">
+      <div class="am-cap">
+        <div class="am-l"><span class="am-n">01</span><p class="am-t" data-edit="e452">소구점을 한 줄로 줄입니다</p><p class="am-s" data-edit="e454">가전은 스펙보다 무엇이 편해지는지를 먼저 씁니다</p></div>
+        <p class="am-b" data-edit="e449">샤크닌자 · 가전</p>
+      </div>
+      <div class="am-row" data-dir="1">
+        <div class="am-view">
+          <div class="am-track">
           <img src="assets/creatives/shark_360_suction.jpg" alt="샤크 360° 흡입" loading="lazy" decoding="async">
           <img src="assets/creatives/ninja_04.jpg" alt="샤크 에보파워 시스템" loading="lazy" decoding="async">
           <img src="assets/creatives/ninja_campingbag.jpg" alt="닌자 캠핑백" loading="lazy" decoding="async">
@@ -557,24 +560,18 @@
           <img src="assets/creatives/ninja_07.jpg" alt="샤크 파워클린 360" loading="lazy" decoding="async">
           <img src="assets/creatives/ninja_08.jpg" alt="블랙프라이데이 세일" loading="lazy" decoding="async">
           <img src="assets/creatives/ninja_06.jpg" alt="닌자 넵다세일" loading="lazy" decoding="async">
-          <div class="am-brand"><img src="assets/img/logo_discovery.png" alt="Discovery Expedition" loading="lazy" decoding="async"><p class="k" data-edit="e449">패션 · 10종</p></div>
-          <img src="assets/creatives/discovery_01.jpg" alt="디스커버리 트레킹화" loading="lazy" decoding="async">
-          <img src="assets/creatives/discovery_02.jpg" alt="프레시벤트 티셔츠" loading="lazy" decoding="async">
-          <img src="assets/creatives/discovery_03.jpg" alt="볼트 메쉬" loading="lazy" decoding="async">
-          <img src="assets/creatives/discovery_04.jpg" alt="그래픽 티셔츠" loading="lazy" decoding="async">
-          <img src="assets/creatives/discovery_05.jpg" alt="볼트 메쉬 데일리 슈즈" loading="lazy" decoding="async">
-          <img src="assets/creatives/discovery_06.jpg" alt="브릭 슈즈" loading="lazy" decoding="async">
-          <img src="assets/creatives/discovery_07.jpg" alt="디스커버리 반팔티" loading="lazy" decoding="async">
-          <img src="assets/creatives/discovery_08.jpg" alt="무신사 웨어러블 샌들" loading="lazy" decoding="async">
-          <img src="assets/creatives/discovery_09.jpg" alt="볼트 데일리 슈즈" loading="lazy" decoding="async">
-          <img src="assets/creatives/discovery_10.jpg" alt="접촉냉감 반팔티" loading="lazy" decoding="async">
+          </div>
         </div>
       </div>
     </div>
-    <div class="am-row" data-dir="-1">
-      <div class="am-view">
-        <div class="am-track">
-          <div class="am-brand"><img src="assets/img/logo_zinus.png" alt="ZINUS" loading="lazy" decoding="async"><p class="k" data-edit="e450">홈퍼니싱 · 10종</p></div>
+    <div class="am-group">
+      <div class="am-cap">
+        <div class="am-l"><span class="am-n">02</span><p class="am-t" data-edit="e455">혜택은 크게, 제작은 빠르게</p><p class="am-s" data-edit="e457">매주 바뀌는 할인율과 일정에 맞춰 많이 만듭니다</p></div>
+        <p class="am-b" data-edit="e451">지누스 · 홈퍼니싱 &nbsp;/&nbsp; 메노킨 · 뷰티(일본)</p>
+      </div>
+      <div class="am-row" data-dir="-1">
+        <div class="am-view">
+          <div class="am-track">
           <img src="assets/creatives/zinus_01.jpg" alt="지누스 파이널 페스타" loading="lazy" decoding="async">
           <img src="assets/creatives/zinus_02.jpg" alt="지누스 침대 세트 라이브" loading="lazy" decoding="async">
           <img src="assets/creatives/zinus_03.jpg" alt="리빙슈퍼세일위크" loading="lazy" decoding="async">
@@ -585,10 +582,32 @@
           <img src="assets/creatives/zinus_08.jpg" alt="베스트 어워즈" loading="lazy" decoding="async">
           <img src="assets/creatives/zinus_09.jpg" alt="리빙슈퍼세일위크" loading="lazy" decoding="async">
           <img src="assets/creatives/zinus_10.jpg" alt="베스트픽 라이브" loading="lazy" decoding="async">
-          <div class="am-brand"><b class="wm">메노킨</b><p class="k" data-edit="e451">뷰티 · 일본 · 3종</p></div>
           <img src="assets/creatives/menokin_a1.jpg" alt="메노킨 3종세트 소재" loading="lazy" decoding="async">
           <img src="assets/creatives/menokin_b.jpg" alt="메노킨 選べる1+1 소재" loading="lazy" decoding="async">
           <img src="assets/creatives/menokin_single.jpg" alt="메노킨 단품 소재" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="am-group">
+      <div class="am-cap">
+        <div class="am-l"><span class="am-n">03</span><p class="am-t" data-edit="e458">브랜드의 톤을 지킵니다</p><p class="am-s" data-edit="e459">패션은 할인율보다 제품 이름과 착용 컷이 먼저입니다</p></div>
+        <p class="am-b" data-edit="e453">디스커버리 · 패션</p>
+      </div>
+      <div class="am-row" data-dir="1">
+        <div class="am-view">
+          <div class="am-track">
+          <img src="assets/creatives/discovery_01.jpg" alt="디스커버리 트레킹화" loading="lazy" decoding="async">
+          <img src="assets/creatives/discovery_02.jpg" alt="프레시벤트 티셔츠" loading="lazy" decoding="async">
+          <img src="assets/creatives/discovery_03.jpg" alt="볼트 메쉬" loading="lazy" decoding="async">
+          <img src="assets/creatives/discovery_04.jpg" alt="그래픽 티셔츠" loading="lazy" decoding="async">
+          <img src="assets/creatives/discovery_05.jpg" alt="볼트 메쉬 데일리 슈즈" loading="lazy" decoding="async">
+          <img src="assets/creatives/discovery_06.jpg" alt="브릭 슈즈" loading="lazy" decoding="async">
+          <img src="assets/creatives/discovery_07.jpg" alt="디스커버리 반팔티" loading="lazy" decoding="async">
+          <img src="assets/creatives/discovery_08.jpg" alt="무신사 웨어러블 샌들" loading="lazy" decoding="async">
+          <img src="assets/creatives/discovery_09.jpg" alt="볼트 데일리 슈즈" loading="lazy" decoding="async">
+          <img src="assets/creatives/discovery_10.jpg" alt="접촉냉감 반팔티" loading="lazy" decoding="async">
+          </div>
         </div>
       </div>
     </div>
@@ -1249,6 +1268,6 @@
   </div>
 </section>
 
-<script src="assets/js/site.js?v=202609300937"></script>
+<script src="assets/js/site.js?v=202609301003"></script>
 </body>
 </html>
